@@ -29,9 +29,50 @@ def command_median (id, command)
 	end
 end
 
+def run_command (command)
+	stdout,stderr,status = Open3.capture3(command)
+	stdout
+end
+
+
+@files_H = Hash.new("unknown")
+@files_H["76baeeb"] = "vbdb/linux/"
+
+def folder (folder, file)
+	"#{folder}/#{@files_H[file]}#{file}/#{file}.c"
+end
+
+def source (file)
+	folder("source", file)
+end
+
+def target (file)
+	folder("target", file)
+end
+
+def oracle (file)
+	folder("oracle", file)
+end
 
 puts "\n"*20
 puts "Run test"
+
+if (ARGV[0] == "size")
+	puts "HASH       | source | oracle | "
+	puts "-------------------------------"
+	for file in @files_H.keys
+		puts file.ljust(10, ' ') + " | " +
+			run_command("stat stat --printf=\"%s\" #{source(file)}").ljust(6, ' ') + " | " +
+			run_command("stat stat --printf=\"%s\" #{oracle(file)}").ljust(6, ' ') + " | "
+	end
+else
+	for file in @files_H.keys
+		puts "source/#{@files_H[file]}#{file}/#{file}.c"
+		puts source(file)
+		puts target(file)
+		puts oracle(file)
+	end
+end
 
 # for file in Dir.glob("./simple/*.c").sort
 # 	puts file
