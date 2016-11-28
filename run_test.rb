@@ -2,7 +2,7 @@ require 'open3'
 
 def time_diff_milli(start, finish)
    #((finish - start) * 1000.0).round(2)
-   (finish - start).round(3)
+   (finish - start) * 1000
 end
 
 def median(array)
@@ -11,66 +11,150 @@ def median(array)
   (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
 end
 
-def command_median (id, command)
-	status = ""
+def command_median (command)
+	status = 0
 	times = Array.new 
-	(1..10).each do |n|
+	(1..50).each do |n|
 		t1 = Time.now
 		stdout,stderr,status = Open3.capture3(command)
 		t2 = Time.now
 		msecs = time_diff_milli t1, t2
 		times << msecs
 	end
-	puts id + (sprintf '%.3f', median(times)) + " ms :> " + command
-	#puts sprintf '%.2f', msecs
 
-	if (status != 0)
-		puts ":> ERROR"
+	if (status == 0)
+		sprintf '%.0f', median(times)
+	else
+		"ERR"
 	end
 end
 
 def run_command (command)
 	stdout,stderr,status = Open3.capture3(command)
-	stdout
+	output = stdout
+	if (stderr.length != 0)
+		output = output + "\nERROR:\n" + stderr
+	end
+	return output
 end
 
 
-@files_H = Hash.new("unknown")
+@files_H = Hash.new("")
 @files_H["76baeeb"] = "vbdb/linux/"
 
-def folder (folder, file)
-	"#{folder}/#{@files_H[file]}#{file}/#{file}.c"
+@variant_config_H = Hash.new("")
+@variant_config_H["76baeeb"] = "-D CONFIG_X86_32 -D CONFIG_NUMA -D CONFIG_PCI"
+
+@llbmc_args_H = Hash.new("")
+@llbmc_args_H["76baeeb"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+
+def folder (folder, file, ext)
+	"#{folder}/#{@files_H[file]}#{file}/#{file}#{ext}"
 end
 
 def source (file)
-	folder("source", file)
+	folder("source", file, ".c")
 end
 
 def target (file)
-	folder("target", file)
+	folder("target", file, ".c")
+end
+
+def variant (file)
+	folder("variant", file, ".c")
 end
 
 def oracle (file)
-	folder("oracle", file)
+	folder("oracle", file, ".c")
+end
+
+def variantBC (file)
+	folder("variant", file, ".bc")
+end
+
+def oracleBC (file)
+	folder("oracle", file, ".bc")
 end
 
 puts "\n"*20
 puts "Run test"
 
-if (ARGV[0] == "size")
-	puts "HASH       | source | oracle | "
-	puts "-------------------------------"
-	for file in @files_H.keys
-		puts file.ljust(10, ' ') + " | " +
-			run_command("stat stat --printf=\"%s\" #{source(file)}").ljust(6, ' ') + " | " +
-			run_command("stat stat --printf=\"%s\" #{oracle(file)}").ljust(6, ' ') + " | "
+if (ARGV[0] != nil)
+	if (@files_H.keys.include?(ARGV[0]))
+		file = ARGV[0]
+		puts
+		puts "--------------------------------------------------------------"
+		puts "  TESTING " + file
+		puts
+		puts "  source size: " + run_command("stat --printf=\"%s\" #{source(file)}") + "B"
+		puts "  oracle size: " + run_command("stat --printf=\"%s\" #{oracle(file)}") + "B"
+		puts
+		run_command("mkdir -p variant/#{@files_H[file]}#{file}")
+		puts "  " + command = "clang -E #{@variant_config_H[file]} -o #{variant(file)} #{source(file)}"
+		puts "\n" + run_command(command)
+		puts
+		run_command("mkdir -p target/#{@files_H[file]}#{file}")
+		puts "  " + command = "java -jar reconfigurator.jar -source #{source(file)} -target #{target(file)} -oracle #{oracle(file)}"
+		puts "\n" + run_command(command)
+		puts
+		puts "--------------------------------------------------------------"
+		puts "  FRAMA-C"
+		puts
+		puts "  " + command = "frama-c -val -quiet #{variant(file)}"
+		puts "\n" + run_command(command)
+		puts
+		puts "  " + command = "frama-c -val -quiet #{oracle(file)}"
+		puts "\n" + run_command(command)
+		puts
+		puts "--------------------------------------------------------------"
+		puts "  CLANG"
+		puts
+		puts "  " + command = "clang -c -g -emit-llvm -Wall -o #{variantBC(file)} #{variant(file)}"
+		puts "\n" + run_command(command)
+		puts
+		puts "  " + command = "clang -c -g -emit-llvm -Wall -o #{oracleBC(file)} #{oracle(file)}"
+		puts "\n" + run_command(command)
+		puts
+		puts "--------------------------------------------------------------"
+		puts "  LLBMC"
+		puts
+		puts "  " + command = "llbmc #{@llbmc_args_H[file]} #{variantBC(file)}"
+		puts "\n" + run_command(command)
+		puts
+		puts "  " + command = "llbmc #{@llbmc_args_H[file]} #{oracleBC(file)}"
+		puts "\n" + run_command(command)
+	else
+		puts "file not found"
 	end
 else
+	id = 0
+	puts " ID  | HASH    | file size (B)   | frama-c (ms)    | clang (ms)      | llbmc (ms)      |"
+	puts "     |         | source | oracle | var    | oracle | var    | oracle | var    | oracle |"
+	puts "----------------------------------------------------------------------------------------"
 	for file in @files_H.keys
-		puts "source/#{@files_H[file]}#{file}/#{file}.c"
-		puts source(file)
-		puts target(file)
-		puts oracle(file)
+		id = id + 1
+		print id.to_s.rjust(4, ' ') + " |"
+		print file.rjust(8, ' ') + " |"
+		
+		run_command("mkdir -p variant/#{@files_H[file]}#{file}")
+		run_command("clang -E #{@variant_config_H[file]} -o #{variant(file)} #{source(file)}")
+
+		run_command("mkdir -p target/#{@files_H[file]}#{file}")
+		run_command("java -jar reconfigurator.jar -source #{source(file)} -target #{target(file)} -oracle #{oracle(file)}")
+
+		print run_command("stat --printf=\"%s\" #{source(file)}").rjust(7, ' ') + " |"
+		print run_command("stat --printf=\"%s\" #{oracle(file)}").rjust(7, ' ') + " |"
+
+		print command_median("frama-c -val -quiet #{variant(file)}").rjust(7, ' ') + " |"
+		print command_median("frama-c -val -quiet #{oracle(file)}").rjust(7, ' ') + " |"
+		
+		print command_median("clang -c -g -emit-llvm -Wall -o #{variantBC(file)} #{variant(file)}").rjust(7, ' ') + " |"
+		print command_median("clang -c -g -emit-llvm -Wall -o #{oracleBC(file)} #{oracle(file)}").rjust(7, ' ') + " |"
+
+		print command_median("llbmc #{@llbmc_args_H[file]} #{variantBC(file)}").rjust(7, ' ') + " |"
+		print command_median("llbmc #{@llbmc_args_H[file]} #{oracleBC(file)}").rjust(7, ' ') + " |"
+
+		puts
 	end
 end
 
