@@ -22,11 +22,7 @@ def command_median (command)
 		times << msecs
 	end
 
-	if (status == 0)
-		sprintf '%.0f', median(times)
-	else
-		"ERR"
-	end
+	sprintf '%.0f', median(times)
 end
 
 def run_command (command)

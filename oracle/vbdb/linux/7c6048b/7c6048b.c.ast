@@ -1,0 +1,116 @@
+|- TranslationUnit
+   |- ExternalDeclarationList
+      |- FunctionDefinition
+      |  |- FunctionPrototype
+      |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
+      |  |  |- FunctionDeclarator
+      |  |     |- SimpleDeclarator
+      |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>backlight_device_unregister_V0  
+      |  |     |- PostfixingFunctionDeclarator
+      |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+      |  |- CompoundStatement
+      |  |  |- DeclarationOrStatementList
+      |  |     |- ReturnStatement
+      |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
+      |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+      |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
+      |- FunctionDefinition
+      |  |- FunctionPrototype
+      |  |  |- BasicDeclarationSpecifier
+      |  |  |  |- DeclarationQualifierList
+      |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
+      |  |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
+      |  |  |- FunctionDeclarator
+      |  |     |- SimpleDeclarator
+      |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>acpi_video_bus_put_one_device_V1  
+      |  |     |- PostfixingFunctionDeclarator
+      |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+      |  |- CompoundStatement
+      |  |  |- DeclarationOrStatementList
+      |  |     |- ExpressionStatement
+      |  |     |  |- PrimaryExpression
+      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |  |- ConditionalExpression
+      |  |     |  |  |  |- PrimaryExpression
+      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |  |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_BACKLIGHT_CLASS_DEVICE  
+      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
+      |  |     |  |  |  |- FunctionCall
+      |  |     |  |  |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>backlight_device_unregister_V0  
+      |  |     |  |  |  |  |- ExpressionList
+      |  |     |  |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
+      |  |     |  |  |  |- FunctionCall
+      |  |     |  |  |     |- PrimaryIdentifier
+      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>backlight_device_unregister  
+      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+      |  |     |- ReturnStatement
+      |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
+      |  |        |- xtc.lang.cpp.Syntax.Text<OCTALconstant>0  
+      |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+      |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
+      |- FunctionDefinition
+         |- FunctionPrototype
+         |  |- xtc.lang.cpp.Syntax.Language<INT>int  
+         |  |- FunctionDeclarator
+         |     |- SimpleDeclarator
+         |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>main  
+         |     |- PostfixingFunctionDeclarator
+         |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |        |- ParameterTypeListOpt
+         |        |  |- ParameterTypeList
+         |        |     |- ParameterList
+         |        |        |- ParameterDeclaration
+         |        |        |  |- xtc.lang.cpp.Syntax.Language<INT>int  
+         |        |        |  |- SimpleDeclarator
+         |        |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argc  
+         |        |        |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+         |        |        |- ParameterDeclaration
+         |        |           |- xtc.lang.cpp.Syntax.Language<CHAR>char  
+         |        |           |- UnaryIdentifierDeclarator
+         |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
+         |        |              |- UnaryIdentifierDeclarator
+         |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
+         |        |                 |- SimpleDeclarator
+         |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argv  
+         |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+         |- CompoundStatement
+         |  |- DeclarationOrStatementList
+         |     |- SelectionStatement
+         |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
+         |     |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |  |- PrimaryExpression
+         |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |  |  |- LogicalAndExpression
+         |     |  |  |  |- PrimaryIdentifier
+         |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_ACPI  
+         |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ANDAND>&&  
+         |     |  |  |  |- PrimaryIdentifier
+         |     |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_STUB_POULSBO  
+         |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |  |- ExpressionStatement
+         |     |     |- FunctionCall
+         |     |     |  |- PrimaryIdentifier
+         |     |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>acpi_video_bus_put_one_device_V1  
+         |     |     |  |- ExpressionList
+         |     |     |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |     |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |     |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+         |     |- ReturnStatement
+         |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
+         |        |- xtc.lang.cpp.Syntax.Text<OCTALconstant>0  
+         |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+         |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
