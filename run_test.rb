@@ -41,12 +41,117 @@ end
 
 @files_H = Hash.new("")
 @files_H["76baeeb"] = "vbdb/linux/"
+@files_H["f7ab9b4"] = "vbdb/linux/"
+@files_H["ee3f34e"] = "vbdb/linux/"
+@files_H["6252547"] = "vbdb/linux/"
+@files_H["8c82962"] = "vbdb/linux/"
+@files_H["60e233a"] = "vbdb/linux/"
+@files_H["0f8f809"] = "vbdb/linux/"
+@files_H["7acf6cd"] = "vbdb/linux/"
+@files_H["bc8cec0"] = "vbdb/linux/"
+@files_H["30e0532"] = "vbdb/linux/"
+@files_H["1c17e4d"] = "vbdb/linux/"
+@files_H["e39363a"] = "vbdb/linux/"
+@files_H["7c6048b"] = "vbdb/linux/"
+@files_H["2f02c15"] = "vbdb/linux/"
+@files_H["6515e48"] = "vbdb/linux/"
+@files_H["242f1a3"] = "vbdb/linux/"
+@files_H["6651791"] = "vbdb/linux/"
+@files_H["f48ec1d"] = "vbdb/linux/"
+@files_H["e67bc51"] = "vbdb/linux/"
+@files_H["e68bb91"] = "vbdb/linux/"
+@files_H["809e660"] = "vbdb/linux/"
+@files_H["d6c7e11"] = "vbdb/linux/"
+@files_H["63878ac"] = "vbdb/linux/"
+@files_H["657e964"] = "vbdb/linux/"
+@files_H["0988c4c"] = "vbdb/linux/"
+
+@files_H["199501f"] = "vbdb/busybox/"
+@files_H["1b487ea"] = "vbdb/busybox/"
+@files_H["b273d66"] = "vbdb/busybox/"
+@files_H["cf1f2ac"] = "vbdb/busybox/"
+@files_H["ebee301"] = "vbdb/busybox/"
+@files_H["5275b1e"] = "vbdb/busybox/"
+@files_H["b7ebc61"] = "vbdb/busybox/"
+@files_H["5cd6461"] = "vbdb/busybox/"
 
 @variant_config_H = Hash.new("")
 @variant_config_H["76baeeb"] = "-D CONFIG_X86_32 -D CONFIG_NUMA -D CONFIG_PCI"
+#@files_H["f7ab9b4"] = "vbdb/linux/"
+#@files_H["ee3f34e"] = "vbdb/linux/"
+#@files_H["6252547"] = "vbdb/linux/"
+#@files_H["8c82962"] = "vbdb/linux/"
+#@files_H["60e233a"] = "vbdb/linux/"
+#@files_H["0f8f809"] = "vbdb/linux/"
+#@files_H["7acf6cd"] = "vbdb/linux/"
+#@files_H["bc8cec0"] = "vbdb/linux/"
+#@files_H["30e0532"] = "vbdb/linux/"
+#@files_H["1c17e4d"] = "vbdb/linux/"
+#@files_H["e39363a"] = "vbdb/linux/"
+#@files_H["7c6048b"] = "vbdb/linux/"
+#@files_H["2f02c15"] = "vbdb/linux/"
+#@files_H["6515e48"] = "vbdb/linux/"
+#@files_H["242f1a3"] = "vbdb/linux/"
+#@files_H["6651791"] = "vbdb/linux/"
+#@files_H["f48ec1d"] = "vbdb/linux/"
+#@files_H["e67bc51"] = "vbdb/linux/"
+#@files_H["e68bb91"] = "vbdb/linux/"
+#@files_H["809e660"] = "vbdb/linux/"
+#@files_H["d6c7e11"] = "vbdb/linux/"
+#@files_H["63878ac"] = "vbdb/linux/"
+#@files_H["657e964"] = "vbdb/linux/"
+#@files_H["0988c4c"] = "vbdb/linux/"
+
+#@files_H["199501f"] = "vbdb/busybox/"
+#@files_H["1b487ea"] = "vbdb/busybox/"
+#@files_H["b273d66"] = "vbdb/busybox/"
+#@files_H["cf1f2ac"] = "vbdb/busybox/"
+#@files_H["ebee301"] = "vbdb/busybox/"
+#@files_H["5275b1e"] = "vbdb/busybox/"
+#@files_H["b7ebc61"] = "vbdb/busybox/"
+#@files_H["5cd6461"] = "vbdb/busybox/"
 
 @llbmc_args_H = Hash.new("")
 @llbmc_args_H["76baeeb"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["f7ab9b4"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["ee3f34e"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["6252547"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["8c82962"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["60e233a"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["0f8f809"] = "--max-loop-iterations=100"
+@llbmc_args_H["7acf6cd"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["bc8cec0"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["30e0532"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["1c17e4d"] = "-ignore-missing-function-bodies --max-loop-iterations=100"
+@llbmc_args_H["e39363a"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["7c6048b"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["2f02c15"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["6515e48"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["242f1a3"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["6651791"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["f48ec1d"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["e67bc51"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["e68bb91"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["809e660"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["d6c7e11"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["63878ac"] = "-no-custom-assertions -ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["657e964"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["0988c4c"] = "--max-loop-iterations=100"
+
+@llbmc_args_H["199501f"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["1b487ea"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["b273d66"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["cf1f2ac"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["ebee301"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["5275b1e"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["b7ebc61"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+@llbmc_args_H["5cd6461"] = "-ignore-missing-function-bodies --no-max-loop-iterations-checks"
+
+# OTHER LLBMC ARGS
+# 	llbmc_H["0dc77b6"] = "llbmc --max-loop-iterations=100 0dc77b6/variant-err/0dc77b6.bc"
+# 	llbmc_H["1f758a4"] = "llbmc --max-loop-iterations=100 1f758a4/variant-err/1f758a4.bc"
+# 	llbmc_H["208d898"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 208d898/variant-err/208d898.bc"
+# 	llbmc_H["218ad12"] = "llbmc -leak-check --max-loop-iterations=100 218ad12/variant-err/218ad12.bc"
 
 def folder (folder, file, ext)
 	"#{folder}/#{@files_H[file]}#{file}/#{file}#{ext}"
@@ -157,94 +262,5 @@ else
 		puts
 	end
 end
-
-# for file in Dir.glob("./simple/*.c").sort
-# 	puts file
-
-# 	name = File.basename(file, ".c")
-# 	# Dir.mkdir name
-# 	# Dir.mkdir name + "/variant-err"
-# 	# Dir.mkdir name + "/source-err"
-# 	# Dir.mkdir name + "/target-err"
-# 	# system "cp simple/#{name}.c #{name}/source-err/"
-# 	# system "cp simple-target/#{name}.c #{name}/target-err/"
-
-# 	# command = "clang -E -include varconfig.h #{name}/source-err/#{name}.c -o #{name}/variant-err/#{name}.c"
-# 	# stdout,stderr,status = Open3.capture3(command)
-# 	# puts ":> " + command
-# 	# if (status != 0)
-# 	# 	puts ":> ERROR"
-# 	# end
-
-# 	command_median("frama variant: ", "frama-c -val #{name}/variant-err/#{name}.c")
-	
-# 	command_median("frama reconfd: ", "frama-c -val #{name}/target-err/#{name}.c")
-
-	
-# 	command_median("clang variant: ", "clang -c -g -emit-llvm -Wall -include varconfig.h #{name}/source-err/#{name}.c -o #{name}/variant-err/#{name}.bc")
-
-# 	command_median("clang reconfd: ", "clang -c -g -emit-llvm -Wall -include recconfig.h #{name}/target-err/#{name}.c -o #{name}/target-err/#{name}.bc")
-
-	
-
-# 	llbmc_H = Hash.new("llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks [&NAME]/variant-err/[&NAME].bc")
-# 	llbmc_H["0988c4c"] = "llbmc --max-loop-iterations=100 0988c4c/variant-err/0988c4c.bc"
-# 	llbmc_H["0dc77b6"] = "llbmc --max-loop-iterations=100 0dc77b6/variant-err/0dc77b6.bc"
-# 	llbmc_H["0f8f809"] = "llbmc --max-loop-iterations=100 0f8f809/variant-err/0f8f809.bc"
-# 	llbmc_H["1c17e4d"] = "llbmc --ignore-missing-function-bodies --max-loop-iterations=100 1c17e4d/variant-err/1c17e4d.bc"
-# 	llbmc_H["1f758a4"] = "llbmc --max-loop-iterations=100 1f758a4/variant-err/1f758a4.bc"
-# 	llbmc_H["208d898"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 208d898/variant-err/208d898.bc"
-# 	llbmc_H["218ad12"] = "llbmc -leak-check --max-loop-iterations=100 218ad12/variant-err/218ad12.bc"
-# 	llbmc_H["221ac32"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 221ac32/variant-err/221ac32.bc"
-# 	llbmc_H["30e0532"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 30e0532/variant-err/30e0532.bc"
-# 	llbmc_H["36855dc"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 36855dc/variant-err/36855dc.bc"
-# 	llbmc_H["472a474"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 472a474/variant-err/472a474.bc"
-# 	llbmc_H["60e233a"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 60e233a/variant-err/60e233a.bc"
-# 	llbmc_H["6252547"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 6252547/variant-err/6252547.bc"
-# 	llbmc_H["63878ac"] = "llbmc -no-custom-assertions -ignore-missing-function-bodies --no-max-loop-iterations-checks 63878ac/variant-err/63878ac.bc"
-# 	llbmc_H["657e964"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 657e964/variant-err/657e964.bc"
-# 	llbmc_H["76baeeb"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 76baeeb/variant-err/76baeeb.bc"
-# 	llbmc_H["7acf6cd"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 7acf6cd/variant-err/7acf6cd.bc"
-# 	llbmc_H["8c82962"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 8c82962/variant-err/8c82962.bc"
-# 	llbmc_H["91ea820"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 91ea820/variant-err/91ea820.bc"
-# 	llbmc_H["ae249b5"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks ae249b5/variant-err/ae249b5.bc"
-# 	llbmc_H["eb91f1d"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks eb91f1d/variant-err/eb91f1d.bc"
-# 	llbmc_H["f3d83e2"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks f3d83e2/variant-err/f3d83e2.bc"
-# 	llbmc_H["f7ab9b4"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks f7ab9b4/variant-err/f7ab9b4.bc"
-
-
-
-# 	command_median("llbmc variant: ", llbmc_H[name].gsub("[&NAME]", name))
-
-	
-
-# 	llbmc_H = Hash.new("llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks [&NAME]/target-err/[&NAME].bc")
-# 	llbmc_H["0988c4c"] = "llbmc --max-loop-iterations=100 0988c4c/target-err/0988c4c.bc"
-# 	llbmc_H["0dc77b6"] = "llbmc --max-loop-iterations=100 0dc77b6/target-err/0dc77b6.bc"
-# 	llbmc_H["0f8f809"] = "llbmc --max-loop-iterations=100 0f8f809/target-err/0f8f809.bc"
-# 	llbmc_H["1c17e4d"] = "llbmc --ignore-missing-function-bodies --max-loop-iterations=100 1c17e4d/target-err/1c17e4d.bc"
-# 	llbmc_H["1f758a4"] = "llbmc --max-loop-iterations=100 1f758a4/target-err/1f758a4.bc"
-# 	llbmc_H["208d898"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 208d898/target-err/208d898.bc"
-# 	llbmc_H["218ad12"] = "llbmc -leak-check --max-loop-iterations=100 218ad12/target-err/218ad12.bc"
-# 	llbmc_H["221ac32"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 221ac32/target-err/221ac32.bc"
-# 	llbmc_H["30e0532"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 30e0532/target-err/30e0532.bc"
-# 	llbmc_H["36855dc"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 36855dc/target-err/36855dc.bc"
-# 	llbmc_H["472a474"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 472a474/target-err/472a474.bc"
-# 	llbmc_H["60e233a"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 60e233a/target-err/60e233a.bc"
-# 	llbmc_H["6252547"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 6252547/target-err/6252547.bc"
-# 	llbmc_H["63878ac"] = "llbmc -no-custom-assertions -ignore-missing-function-bodies --no-max-loop-iterations-checks 63878ac/target-err/63878ac.bc"
-# 	llbmc_H["657e964"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 657e964/target-err/657e964.bc"
-# 	llbmc_H["76baeeb"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 76baeeb/target-err/76baeeb.bc"
-# 	llbmc_H["7acf6cd"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 7acf6cd/target-err/7acf6cd.bc"
-# 	llbmc_H["8c82962"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 8c82962/target-err/8c82962.bc"
-# 	llbmc_H["91ea820"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks 91ea820/target-err/91ea820.bc"
-# 	llbmc_H["ae249b5"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks ae249b5/target-err/ae249b5.bc"
-# 	llbmc_H["eb91f1d"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks eb91f1d/target-err/eb91f1d.bc"
-# 	llbmc_H["f7ab9b4"] = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks f7ab9b4/target-err/f7ab9b4.bc"
-
-# 	command_median("llbmc reconfd: ", llbmc_H[name].gsub("[&NAME]", name))
-
-# 	puts
-# end
 
 puts "End test"
