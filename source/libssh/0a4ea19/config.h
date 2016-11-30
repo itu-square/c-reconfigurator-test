@@ -138,17 +138,36 @@
    significant byte first (like Motorola and SPARC, unlike Intel). */
 /* #undef WORDS_BIGENDIAN */
 
-// #undef _WIN32
-// #undef __CYGWIN__
-// #undef DES_RISC1
-// #undef DES_RISC2
-// #undef OPENSSL_SYS_UEFI
-// #undef _MSC_VER
-// #define __STDC_VERSION__ 199901L
-// typedef unsigned char uint8_t;
-// typedef unsigned long int uint32_t;
-// typedef unsigned long long int uint64_t;
-// typedef struct struct_size_t size_t;
-// typedef struct struct_mode_t mode_t;
-// typedef struct struct_fd_set fd_set;
-// typedef struct struct_nfds_t nfds_t;
+#define DEPRECATEDIN_0_9_8(x)
+#define DEPRECATEDIN_1_1_0(x)
+
+#ifdef RECONFIGURATOR
+typedef signed char 	int8_t;
+typedef unsigned char 	uint8_t;
+typedef signed int 	int16_t;
+typedef unsigned int 	uint16_t;
+typedef signed long int 	int32_t;
+typedef unsigned long int 	uint32_t;
+typedef signed long long int 	int64_t;
+typedef unsigned long long int 	uint64_t;
+typedef struct struct_size_t size_t;
+typedef struct struct_size_t time_t;
+typedef struct struct_mode_t mode_t;
+typedef struct struct_fd_set fd_set;
+typedef struct struct_nfds_t nfds_t;
+typedef struct struct_pthread_once_t pthread_once_t;
+typedef struct struct_pthread_key_t pthread_key_t;
+typedef struct struct_pthread_t pthread_t;
+typedef struct struct_va_list va_list;
+typedef struct struct_ssh_key ssh_key;
+typedef struct struct_ssh_public_key ssh_public_key;
+typedef struct struct_ssh_private_key ssh_private_key;
+typedef struct struct_ssh_signature ssh_signature;
+typedef struct struct_ssh_auth_callback ssh_auth_callback;
+typedef struct struct_off_t off_t;
+
+typedef struct struct_ssh_buffer ssh_buffer;
+typedef struct struct_ssh_string ssh_string;
+typedef struct struct_ssh_session ssh_session;
+typedef struct struct_SHACTX SHACTX;
+#endif
