@@ -11,10 +11,10 @@ def median(array)
   (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
 end
 
-def command_median (command)
+def command_median_repeat (command, repeat)
 	status = 0
 	times = Array.new 
-	(1..50).each do |n|
+	(1..repeat).each do |n|
 		t1 = Time.now
 		stdout,stderr,status = Open3.capture3(command)
 		t2 = Time.now
@@ -23,6 +23,10 @@ def command_median (command)
 	end
 
 	sprintf '%.0f', median(times)
+end
+
+def command_median (command)
+	command_median_repeat(command, 50)
 end
 
 def run_command (command)
@@ -194,13 +198,65 @@ def oracleBC (file)
 	folder("oracle", file, ".bc")
 end
 
+
+def configs(file)
+  name  = /(?<macro>[A-Z0-9_]+)/
+  regex = Regexp.union(/#if(n)?def #{name}/, /#(el)?if defined( )?\(#{name}\)/)
+  opts  = File.open(file).read.scan(regex).flatten.compact.uniq
+  [[]] + (1 .. opts.length).map { |i| opts.combination(i).to_a }.flatten(1)
+end
+
+
+def config_opts(config)
+  if config == []
+    ""
+  else
+    "-D " + config.join(" -D ")
+  end
+end
+
 puts "\n"*20
 puts "Run test"
 
 run_command("rm -rf variant")
 run_command("rm -rf target")
 
-if (ARGV[0] != nil)
+if (ARGV[0] != nil && ARGV[0] == "-bf")
+	puts "running brute force"
+
+	id = 0
+	puts " ID  | HASH    | no. configs | frama-c -bf (ms) | clang -bf (ms) | llbmc -bf (ms) |"
+	puts "-----------------------------------------------------------------------------------"
+	for file in @files_H.keys
+		id = id + 1
+		print id.to_s.rjust(4, ' ') + " |"
+		print file.rjust(8, ' ') + " |"
+		
+		cfgs = configs(source(file))
+		print cfgs.size.to_s.rjust(12, ' ') + " |"
+		
+
+		cid = 0
+		for cfg in cfgs
+			cid = cid + 1
+			cid.to_s + " " + config_opts(cfg)
+			run_command("mkdir -p variant/#{@files_H[file]}#{file}_V#{cid}")
+			" ===> " + command = "clang-3.5 -E #{config_opts(cfg)} -I source/#{@files_H[file]}#{file} -o variant/#{@files_H[file]}#{file}_V#{cid}/#{file}.c #{source(file)}"
+			"\n" + run_command(command)
+		end
+
+		" ===> " + command = (1..cid).map{ |i| "frama-c -val -quiet variant/#{@files_H[file]}#{file}_V#{i}/#{file}.c"}.join(" ; ")
+		print command_median_repeat(command, 5).rjust(17, ' ') + " |"
+		
+		" ===> " + command = (1..cid).map{ |i| "clang-3.5 -c -g -emit-llvm -Wall -o variant/#{@files_H[file]}#{file}_V#{i}/#{file}.bc variant/#{@files_H[file]}#{file}_V#{i}/#{file}.c"}.join(" ; ")
+		print command_median_repeat(command, 5).rjust(15, ' ') + " |"
+		
+		" ===> " + command = (1..cid).map{ |i| "llbmc #{@llbmc_args_H[file]} variant/#{@files_H[file]}#{file}_V#{i}/#{file}.bc"}.join(" ; ")
+		print command_median_repeat(command, 5).rjust(15, ' ') + " |"
+		
+		puts
+	end
+elsif (ARGV[0] != nil)
 	if (@files_H.keys.include?(ARGV[0]))
 		file = ARGV[0]
 		puts
