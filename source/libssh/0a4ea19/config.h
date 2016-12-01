@@ -150,18 +150,13 @@ typedef signed long int 	int32_t;
 typedef unsigned long int 	uint32_t;
 typedef signed long long int 	int64_t;
 typedef unsigned long long int 	uint64_t;
-typedef struct struct_size_t size_t;
 typedef struct struct_size_t time_t;
 typedef struct struct_mode_t mode_t;
-typedef struct struct_fd_set fd_set;
-typedef struct struct_nfds_t nfds_t;
 typedef struct struct_pthread_once_t pthread_once_t;
 typedef struct struct_pthread_key_t pthread_key_t;
 typedef struct struct_pthread_t pthread_t;
 typedef struct struct_va_list va_list;
 typedef struct struct_ssh_key ssh_key;
-typedef struct struct_ssh_public_key ssh_public_key;
-typedef struct struct_ssh_private_key ssh_private_key;
 typedef struct struct_ssh_signature ssh_signature;
 typedef struct struct_ssh_auth_callback ssh_auth_callback;
 typedef struct struct_off_t off_t;
@@ -170,4 +165,36 @@ typedef struct struct_ssh_buffer ssh_buffer;
 typedef struct struct_ssh_string ssh_string;
 typedef struct struct_ssh_session ssh_session;
 typedef struct struct_SHACTX SHACTX;
+
+//typedef struct struct_gcry_sexp_t gcry_sexp_t;
+typedef struct struct_SOCKET SOCKET;
+typedef struct struct_size_t size_t;
+typedef struct struct_ssize_t ssize_t;
+typedef struct struct_fd_set fd_set;
+typedef struct struct_nfds_t nfds_t;
+
+typedef struct struct_SHA_CTX SHA_CTX;
+typedef struct struct_SHA256_CTX SHA256_CTX;
+typedef struct struct_MD5_CTX  MD5_CTX;
+typedef struct struct_HMAC_CTX HMAC_CTX;
+typedef struct struct_BIGNUM BIGNUM;
+typedef struct struct_BN_CTX BN_CTX;
+
+
+typedef struct struct_off_t off_t;
+typedef struct struct_gcry_md_hd_t gcry_md_hd_t;
+typedef struct struct_gcry_mpi_t gcry_mpi_t;
+typedef struct struct_gcry_cipher_hd_t gcry_cipher_hd_t;
+typedef struct struct_gcry_sexp_t gcry_sexp_t;
+
+typedef struct struct_ssh_public_key ssh_public_key;
+typedef struct struct_ssh_private_key ssh_private_key;
+
+typedef struct struct_DSA DSA;
+typedef struct struct_RSA RSA;
+typedef struct struct_DSA_SIG DSA_SIG;
+typedef struct struct_EC_KEY EC_KEY;
+typedef struct struct_ECDSA_SIG ECDSA_SIG;
+
+typedef struct struct_va_list va_list;
 #endif

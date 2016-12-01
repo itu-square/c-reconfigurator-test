@@ -71,7 +71,7 @@ puts cfgs.size.to_s
 			cid = cid + 1
 			puts cid.to_s + " " + opts
 			run_command("mkdir -p variant/libssh/0a4ea19_V#{cid}")
-			puts" ===> " + command = "clang-3.5 -E #{config_opts(cfg)} -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/libgcrypt/ -o variant/libssh/0a4ea19_V#{cid}/pki.c source/libssh/0a4ea19/pki.c"
+			puts" ===> " + command = "clang-3.5 -E #{config_opts(cfg)} -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o variant/libssh/0a4ea19_V#{cid}/pki.c source/libssh/0a4ea19/pki.c"
 			if (run_command(command).include? "ERROR")
 				puts "ERROR"
 			else
@@ -88,20 +88,17 @@ puts cfgs.size.to_s
 		" -source #{Dir.pwd}/source/libssh/0a4ea19/pki.c" +
 		" -target #{Dir.pwd}/target/libssh/0a4ea19/pki.c" +
 		" -hdFile #{Dir.pwd}/source/libssh/0a4ea19/config.h" +
+		" -include source/libssh/0a4ea19/include_libssh/" +
 		" -undef _WIN32" +
 		" -undef _WIN64" +
 		" -undef __MINGW32__" +
-		" -undef HAVE_LIBGCRYPT" +
+		" -undef __SUNPRO_C" +
 		" -undef __CYGWIN__" +
 		" -undef DES_RISC1" +
 		" -undef OPENSSL_SYS_UEFI" +
-		#" -undef _MSC_VER" +
 		" -undef CRYPTO_TDEBUG" +
-		" -define DEBUG_CRYPTO" +
 		" -undef __STDC_VERSION__" +
 		" -define OPENSSL_THREADS" +
-		#" -define OPENSSL_NO_EC" +
-		#" -define OPENSSL_NO_DSA" +
 		" -define OPENSSL_NO_RSA" +
 		" -define OPENSSL_NO_STDIO" +
 		" -define OPENSSL_NO_SOCK" +
@@ -113,25 +110,23 @@ puts cfgs.size.to_s
 		" -U _WIN32" +
 		" -U _WIN64" +
 		" -U __MINGW32__" +
-		" -U HAVE_LIBGCRYPT" +
+		" -U __SUNPRO_C" +
 		" -U __CYGWIN__" +
 		" -U DES_RISC1" +
 		" -U OPENSSL_SYS_UEFI" +
-		#" -U _MSC_VER" +
 		" -U CRYPTO_TDEBUG" +
-		" -D DEBUG_CRYPTO" +
 		" -U __STDC_VERSION__" +
 		" -D OPENSSL_THREADS" +
-		#" -D OPENSSL_NO_EC" +
-		#" -D OPENSSL_NO_DSA" +
 		" -D OPENSSL_NO_RSA" +
 		" -D OPENSSL_NO_STDIO" +
 		" -D OPENSSL_NO_SOCK" +
-		#" -D RECONFIGURATOR"
-		" -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/libgcrypt/ -o target/libssh/0a4ea19/pki.bc target/libssh/0a4ea19/pki.c"
+		" -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o target/libssh/0a4ea19/pki.bc target/libssh/0a4ea19/pki.c"
 	puts run_command(command)
+	puts
 
-puts
+	puts" ===> " + command = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_srv_pki_do_sign_sessionid target/libssh/0a4ea19/pki.bc"
+	puts run_command(command)
+	puts
 
 #run_command("mkdir -p variant/libssh/0a4ea19")
 #puts " ===> " + command = "clang-3.5 -E -I source/libssh/0a4ea19 -o variant/libssh/0a4ea19/pki.c source/libssh/0a4ea19/pki.c"
