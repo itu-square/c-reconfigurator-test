@@ -114,7 +114,7 @@ if (ARGV[0] != nil && ARGV[0] == "0a4ea19")
 		" -source #{Dir.pwd}/source/libssh/0a4ea19/pki.c" +
 		" -target #{Dir.pwd}/target/libssh/0a4ea19/pki.c" +
 		" -hdFile #{Dir.pwd}/source/libssh/0a4ea19/config.h" +
-		" -include source/libssh/0a4ea19/include_libssh/" +
+		" -include #{Dir.pwd}/source/libssh/0a4ea19/include_libssh/" +
 		" -undef _WIN32" +
 		" -undef _WIN64" +
 		" -undef __MINGW32__" +
@@ -165,6 +165,86 @@ if (ARGV[0] != nil && ARGV[0] == "0a4ea19")
 	print "MEDIAN: " + command_median_repeat(command, 5).rjust(15, ' ') + " |"
 	
 	" ===> " + command = (1..cid).map{ |i| "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_srv_pki_do_sign_sessionid variant/libssh/0a4ea19_V#{cid}/pki.bc"}.join(" ; ")
+	print "MEDIAN: " + command_median_repeat(command, 5).rjust(15, ' ') + " |"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+elsif (ARGV[0] != nil && ARGV[0] == "2a10019")
+	puts "source/libssh/2a10019/sftp.c"
+
+	cfgs = configs("source/libssh/2a10019/sftp.c")
+	puts cfgs.size.to_s
+
+	cid = 0
+	for cfg in cfgs
+		opts = config_opts(cfg)
+		unless (opts.include?("_WIN32"))# || opts.include?("HAVE_LIBGCRYPT"))
+			cid = cid + 1
+			puts cid.to_s + " " + opts
+			run_command("mkdir -p variant/libssh/2a10019_V#{cid}")
+			puts" ===> " + command = "clang-3.5 -E #{config_opts(cfg)} -I source/libssh/2a10019/ -I source/libssh/2a10019/include_libssh/ -I source/libssh/2a10019/include_openssl/ -o variant/libssh/2a10019_V#{cid}/sftp.c source/libssh/2a10019/sftp.c"
+			if (run_command(command).include? "ERROR")
+				puts "ERROR"
+				puts run_command(command)
+			else
+				puts "PASS"
+				puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -I source/libssh/2a10019/ -I source/libssh/2a10019/include_libssh/ -I source/libssh/2a10019/include_openssl/ -o variant/libssh/2a10019_V#{cid}/sftp.bc source/libssh/2a10019/sftp.c"
+				puts run_command(command)
+				print "1 Time: " + command_median_repeat(command, 1).rjust(15, ' ') + " |"
+				puts
+			end
+			puts
+			puts
+			puts
+		end
+	end
+
+
+	puts "VARIANT  ------------------------------------------------"
+	puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -I source/libssh/2a10019/ -I source/libssh/2a10019/include_libssh/ -I source/libssh/2a10019/include_openssl/ -o variant/libssh/2a10019_V1/sftp.bc source/libssh/2a10019/sftp.c"
+	puts "MEDIAN: " + command_median(command)
+	puts
+	
+	puts "TARGET ------------------------------------------------"
+
+	run_command("mkdir -p target/libssh/2a10019")
+	puts" ===> " + command = "java -Xms2048m -Xmx10240m -Xss128m -jar reconfigurator.jar" +
+		" -source #{Dir.pwd}/source/libssh/2a10019/sftp.c" +
+		" -target #{Dir.pwd}/target/libssh/2a10019/sftp.c" +
+		" -hdFile #{Dir.pwd}/source/libssh/2a10019/config.h" +
+		" -include #{Dir.pwd}/source/libssh/2a10019/include_libssh/" +
+		" -undef _WIN32" +
+		" -undef __CYGWIN__" +
+		" -undef __SUNPRO_C" +
+		""
+	puts run_command(command)
+	puts
+
+	puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall" +
+		" -U _WIN32" +
+		" -U __CYGWIN__" +
+		" -U __SUNPRO_C" +
+		" -I source/libssh/2a10019/ -I source/libssh/2a10019/include_libssh/ -I source/libssh/2a10019/include_openssl/ -o target/libssh/2a10019/sftp.bc target/libssh/2a10019/sftp.c"
+	puts run_command(command)
+	puts "MEDIAN: " + command_median(command)
+	puts
+
+	puts "BRUTE FORCE-------------------------------------------"
+	
+	" ===> " + command = (1..cid).map{ |i| "clang-3.5 -c -g -emit-llvm -Wall -o variant/libssh/2a10019_V#{cid}/sftp.bc variant/libssh/2a10019_V#{cid}/sftp.c"}.join(" ; ")
 	print "MEDIAN: " + command_median_repeat(command, 5).rjust(15, ' ') + " |"
 end
 
