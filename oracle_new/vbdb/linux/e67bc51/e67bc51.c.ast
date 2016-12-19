@@ -11,13 +11,15 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |        |           |- SimpleDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>skip  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>skip  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -28,10 +30,9 @@
       |  |  |- BasicDeclarationSpecifier
       |  |  |  |- DeclarationQualifierList
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |     |- TypeQualifier
-      |  |  |  |        |- FunctionSpecifier
-      |  |  |  |           |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |     |- FunctionSpecifier
+      |  |  |  |        |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |  |- FunctionDeclarator
       |  |     |- SimpleDeclarator
@@ -41,11 +42,12 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterAbstractDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
       |- FunctionDefinition
@@ -59,22 +61,25 @@
          |        |- ParameterTypeListOpt
          |        |  |- ParameterTypeList
          |        |     |- ParameterList
-         |        |        |- ParameterDeclaration
+         |        |        |- ParameterIdentifierDeclaration
          |        |        |  |- xtc.lang.cpp.Syntax.Language<INT>int  
          |        |        |  |- SimpleDeclarator
-         |        |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argc  
+         |        |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argc  
+         |        |        |  |- AttributeSpecifierListOpt
          |        |        |- xtc.lang.cpp.Syntax.Language<COMMA>,  
-         |        |        |- ParameterDeclaration
+         |        |        |- ParameterIdentifierDeclaration
          |        |           |- xtc.lang.cpp.Syntax.Language<CHAR>char  
          |        |           |- UnaryIdentifierDeclarator
-         |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-         |        |              |- UnaryIdentifierDeclarator
-         |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-         |        |                 |- SimpleDeclarator
-         |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argv  
+         |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+         |        |           |  |- UnaryIdentifierDeclarator
+         |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+         |        |           |     |- SimpleDeclarator
+         |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argv  
+         |        |           |- AttributeSpecifierListOpt
          |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
          |- CompoundStatement
+         |  |- LocalLabelDeclarationListOpt
          |  |- DeclarationOrStatementList
          |     |- ExpressionStatement
          |     |  |- PrimaryExpression

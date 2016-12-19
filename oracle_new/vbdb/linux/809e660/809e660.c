@@ -1,4 +1,5 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_ARM_LPAE;
+
 static int do_page_fault ()
 {
     return 0;

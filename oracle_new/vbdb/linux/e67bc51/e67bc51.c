@@ -1,4 +1,5 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_TRACING;
+
 
 // defined(CONFIG_TRACING)
 void trace_dump_stack_V0 (int skip)

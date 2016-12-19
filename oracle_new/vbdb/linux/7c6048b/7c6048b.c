@@ -1,4 +1,8 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_ACPI;
+int _reconfig_CONFIG_ACPI_VIDEO;
+int _reconfig_CONFIG_STUB_POULSBO;
+int _reconfig_CONFIG_BACKLIGHT_CLASS_DEVICE;
+
 
 // defined(CONFIG_BACKLIGHT_CLASS_DEVICE)
 void backlight_device_unregister_V0 ()
@@ -19,6 +23,9 @@ static int acpi_video_bus_put_one_device_V1 ()
 int main (int argc , char** argv)
 {
     if ((_reconfig_CONFIG_ACPI && _reconfig_CONFIG_STUB_POULSBO))
-         acpi_video_bus_put_one_device_V1 ();
+         (
+                                                                   (_reconfig_CONFIG_ACPI_VIDEO)
+                                                                   ? acpi_video_bus_put_one_device_V1 ()
+                                                                   : acpi_video_bus_put_one_device ());
     return 0;
 }
