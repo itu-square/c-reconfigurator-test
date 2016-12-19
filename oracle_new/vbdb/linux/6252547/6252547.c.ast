@@ -111,58 +111,22 @@
       |  |     |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>ops  
       |  |     |     |  |- AssignmentOperator
       |  |     |     |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |     |  |- PrimaryExpression
-      |  |     |     |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |     |     |- ConditionalExpression
-      |  |     |     |     |  |- PrimaryExpression
-      |  |     |     |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |     |     |  |  |- PrimaryIdentifier
-      |  |     |     |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_IRQ_DOMAIN  
-      |  |     |     |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |     |     |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
-      |  |     |     |     |  |- UnaryExpression
-      |  |     |     |     |  |  |- Unaryoperator
-      |  |     |     |     |  |  |  |- xtc.lang.cpp.Syntax.Language<AND>&  
-      |  |     |     |     |  |  |- PrimaryIdentifier
-      |  |     |     |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>irq_domain_simple_ops_V0  
-      |  |     |     |     |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
-      |  |     |     |     |  |- UnaryExpression
-      |  |     |     |     |     |- Unaryoperator
-      |  |     |     |     |     |  |- xtc.lang.cpp.Syntax.Language<AND>&  
-      |  |     |     |     |     |- PrimaryIdentifier
-      |  |     |     |     |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>irq_domain_simple_ops  
-      |  |     |     |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |     |  |- UnaryExpression
+      |  |     |     |     |- Unaryoperator
+      |  |     |     |     |  |- xtc.lang.cpp.Syntax.Language<AND>&  
+      |  |     |     |     |- PrimaryIdentifier
+      |  |     |     |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>irq_domain_simple_ops_V0  
       |  |     |     |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
-      |  |        |- PrimaryExpression
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |- ConditionalExpression
-      |  |        |  |  |- PrimaryExpression
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_IRQ_DOMAIN  
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
-      |  |        |  |  |- FunctionCall
-      |  |        |  |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>irq_domain_add_V0  
-      |  |        |  |  |  |- ExpressionList
-      |  |        |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |  |     |- ExpressionList
-      |  |        |  |  |     |  |- PrimaryIdentifier
-      |  |        |  |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>ops  
-      |  |        |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
-      |  |        |  |  |- FunctionCall
-      |  |        |  |     |- PrimaryIdentifier
-      |  |        |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>irq_domain_add  
-      |  |        |  |     |- ExpressionList
-      |  |        |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |        |- ExpressionList
-      |  |        |  |        |  |- PrimaryIdentifier
-      |  |        |  |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>ops  
-      |  |        |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- FunctionCall
+      |  |        |  |- PrimaryIdentifier
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>irq_domain_add_V0  
+      |  |        |  |- ExpressionList
+      |  |        |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |     |- ExpressionList
+      |  |        |     |  |- PrimaryIdentifier
+      |  |        |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>ops  
+      |  |        |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
       |- FunctionDefinition

@@ -1,4 +1,6 @@
-#include "/home/alex/reconfigurator_old/vbdb/busybox/simple-target/REconfig.c"
+int _reconfig_BB_AR;
+int _reconfig_BB_CP_MV;
+
 
 // defined(BB_AR)
 void copySubFile_V0 (int src , int dst)
@@ -11,8 +13,8 @@ void copyFile_V1 ()
 {
     int src;
     int dst;
-    (src = rand () % 100);
-    (dst = rand () % 200);
+    src = rand () % 100;
+    dst = rand () % 200;
     (
      (_reconfig_BB_AR)
      ? copySubFile_V0 (src , dst)

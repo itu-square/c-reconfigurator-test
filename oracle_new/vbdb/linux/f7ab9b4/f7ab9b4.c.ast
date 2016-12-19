@@ -7,16 +7,19 @@
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<TYPEDEF>typedef  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |  |- FunctionDeclarator
-      |  |     |- SimpleDeclarator
-      |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>filler_t  
-      |  |     |- PostfixingFunctionDeclarator
-      |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |- ParameterTypeListOpt
-      |  |        |  |- ParameterTypeList
-      |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
-      |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
-      |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |  |  |- SimpleDeclarator
+      |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>filler_t  
+      |  |  |  |- PostfixingFunctionDeclarator
+      |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |  |     |- ParameterTypeListOpt
+      |  |  |     |  |- ParameterTypeList
+      |  |  |     |     |- ParameterList
+      |  |  |     |        |- ParameterAbstractDeclaration
+      |  |  |     |           |- xtc.lang.cpp.Syntax.Language<INT>int  
+      |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
+      |  |  |- InitializerOpt
       |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |- FunctionDefinition
       |  |- FunctionPrototype
@@ -29,13 +32,15 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |        |           |- SimpleDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>n  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>n  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -51,6 +56,8 @@
       |  |  |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
       |  |  |  |- SimpleDeclarator
       |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>f_V0  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
@@ -75,17 +82,16 @@
       |  |  |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
       |  |  |  |- SimpleDeclarator
       |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>f_V1  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
-      |  |        |- PrimaryExpression
-      |  |           |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |           |- UnaryExpression
-      |  |           |  |- Unaryoperator
-      |  |           |  |  |- xtc.lang.cpp.Syntax.Language<AND>&  
-      |  |           |  |- PrimaryIdentifier
-      |  |           |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>some_fun  
-      |  |           |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- UnaryExpression
+      |  |           |- Unaryoperator
+      |  |           |  |- xtc.lang.cpp.Syntax.Language<AND>&  
+      |  |           |- PrimaryIdentifier
+      |  |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>some_fun  
       |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |- FunctionDefinition
       |  |- FunctionPrototype
@@ -98,9 +104,11 @@
       |  |        |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>shmem_get_inode_V2  
       |  |        |- PostfixingFunctionDeclarator
       |  |           |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |           |- ParameterTypeListOpt
       |  |           |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -109,14 +117,11 @@
       |  |        |  |- ConditionalExpression
       |  |        |  |  |- PrimaryExpression
       |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |  |  |- PrimaryExpression
-      |  |        |  |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |  |  |  |- UnaryExpression
-      |  |        |  |  |  |  |  |- Unaryoperator
-      |  |        |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<NOT>!  
-      |  |        |  |  |  |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_TMPFS  
-      |  |        |  |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |  |  |  |- UnaryExpression
+      |  |        |  |  |  |  |- Unaryoperator
+      |  |        |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<NOT>!  
+      |  |        |  |  |  |  |- PrimaryIdentifier
+      |  |        |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_TMPFS  
       |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |        |  |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
       |  |        |  |  |- PrimaryIdentifier
@@ -138,20 +143,19 @@
       |  |        |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>ramfs_get_inode_V3  
       |  |        |- PostfixingFunctionDeclarator
       |  |           |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |           |- ParameterTypeListOpt
       |  |           |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
-      |  |        |- PrimaryExpression
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |- UnaryExpression
-      |  |        |  |  |- Unaryoperator
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<AND>&  
-      |  |        |  |  |- PrimaryIdentifier
-      |  |        |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>some_fun  
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- UnaryExpression
+      |  |        |  |- Unaryoperator
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<AND>&  
+      |  |        |  |- PrimaryIdentifier
+      |  |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>some_fun  
       |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
       |- FunctionDefinition
@@ -165,9 +169,11 @@
       |  |        |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>shmem_file_setup  
       |  |        |- PostfixingFunctionDeclarator
       |  |           |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |           |- ParameterTypeListOpt
       |  |           |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -217,36 +223,35 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- UnaryIdentifierDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |                 |- SimpleDeclarator
-      |  |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- UnaryIdentifierDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |     |- SimpleDeclarator
+      |  |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
-      |  |     |  |- PrimaryExpression
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |- AssignmentExpression
-      |  |     |  |  |  |- UnaryExpression
-      |  |     |  |  |  |  |- Unaryoperator
-      |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |     |  |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
-      |  |     |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |- FunctionCall
-      |  |     |  |  |     |- PrimaryIdentifier
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>shmem_file_setup  
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- AssignmentExpression
+      |  |     |  |  |- UnaryExpression
+      |  |     |  |  |  |- Unaryoperator
+      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |     |  |  |  |- PrimaryIdentifier
+      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |     |  |  |- AssignmentOperator
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |- FunctionCall
+      |  |     |  |     |- PrimaryIdentifier
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>shmem_file_setup  
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -264,18 +269,20 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- UnaryIdentifierDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |                 |- SimpleDeclarator
-      |  |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- UnaryIdentifierDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |     |- SimpleDeclarator
+      |  |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- SelectionStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<IF>if  
@@ -307,16 +314,18 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- SimpleDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>filler  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- SimpleDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>filler  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |        |- FunctionCall
@@ -339,45 +348,43 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- UnaryIdentifierDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |                 |- SimpleDeclarator
-      |  |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- UnaryIdentifierDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |     |- SimpleDeclarator
+      |  |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- Declaration
       |  |     |  |- DeclaringList
       |  |     |  |  |- TypedefTypeSpecifier
       |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |     |  |  |- UnaryIdentifierDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |     |  |     |- SimpleDeclarator
-      |  |     |  |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>filler  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |     |  |  |  |- SimpleDeclarator
+      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>filler  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
-      |  |     |  |- PrimaryExpression
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |- AssignmentExpression
-      |  |     |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>filler  
-      |  |     |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |- PrimaryExpression
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |- UnaryExpression
-      |  |     |  |  |     |  |- Unaryoperator
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |     |  |  |     |  |- PrimaryIdentifier
-      |  |     |  |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- AssignmentExpression
+      |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>filler  
+      |  |     |  |  |- AssignmentOperator
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |- UnaryExpression
+      |  |     |  |     |- Unaryoperator
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |     |  |     |- PrimaryIdentifier
+      |  |     |  |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
       |  |        |- FunctionCall
@@ -402,18 +409,20 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- UnaryIdentifierDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |                 |- SimpleDeclarator
-      |  |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- UnaryIdentifierDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |     |- SimpleDeclarator
+      |  |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |     |  |- FunctionCall
@@ -442,18 +451,20 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- UnaryIdentifierDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |                 |- SimpleDeclarator
-      |  |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- UnaryIdentifierDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |     |- SimpleDeclarator
+      |  |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -479,18 +490,20 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- UnaryIdentifierDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |                 |- SimpleDeclarator
-      |  |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- UnaryIdentifierDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |     |- SimpleDeclarator
+      |  |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -516,18 +529,20 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- UnaryIdentifierDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |                 |- SimpleDeclarator
-      |  |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- UnaryIdentifierDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |     |- SimpleDeclarator
+      |  |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |     |  |- FunctionCall
@@ -564,18 +579,20 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- UnaryIdentifierDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |                 |- SimpleDeclarator
-      |  |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- UnaryIdentifierDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |     |- SimpleDeclarator
+      |  |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -601,18 +618,20 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- UnaryIdentifierDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |                 |- SimpleDeclarator
-      |  |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- UnaryIdentifierDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |     |- SimpleDeclarator
+      |  |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -638,18 +657,20 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- TypedefTypeSpecifier
       |  |        |           |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |        |           |- UnaryIdentifierDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |              |- UnaryIdentifierDeclarator
-      |  |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |        |                 |- SimpleDeclarator
-      |  |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |  |- UnaryIdentifierDeclarator
+      |  |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |           |     |- SimpleDeclarator
+      |  |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -672,18 +693,23 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i915_driver_load_V4  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- Declaration
       |  |     |  |- DeclaringList
       |  |     |  |  |- TypedefTypeSpecifier
       |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>filler_t  
       |  |     |  |  |- UnaryIdentifierDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |     |  |     |- SimpleDeclarator
-      |  |     |  |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |     |  |  |  |- SimpleDeclarator
+      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
+      |  |     |  |  |- InitializerOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -693,14 +719,11 @@
       |  |        |  |- ExpressionList
       |  |        |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
       |  |        |     |- ExpressionList
-      |  |        |     |  |- PrimaryExpression
-      |  |        |     |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |     |     |- UnaryExpression
-      |  |        |     |     |  |- Unaryoperator
-      |  |        |     |     |  |  |- xtc.lang.cpp.Syntax.Language<AND>&  
-      |  |        |     |     |  |- PrimaryIdentifier
-      |  |        |     |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
-      |  |        |     |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |     |  |- UnaryExpression
+      |  |        |     |     |- Unaryoperator
+      |  |        |     |     |  |- xtc.lang.cpp.Syntax.Language<AND>&  
+      |  |        |     |     |- PrimaryIdentifier
+      |  |        |     |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>readpage  
       |  |        |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
@@ -712,9 +735,11 @@
          |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>main  
          |     |- PostfixingFunctionDeclarator
          |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |        |- ParameterTypeListOpt
          |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
          |- CompoundStatement
+         |  |- LocalLabelDeclarationListOpt
          |  |- DeclarationOrStatementList
          |     |- SelectionStatement
          |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  

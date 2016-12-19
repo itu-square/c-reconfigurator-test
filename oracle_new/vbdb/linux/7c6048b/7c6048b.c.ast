@@ -110,29 +110,12 @@
          |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |  |- ExpressionStatement
-         |     |     |- PrimaryExpression
-         |     |     |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |     |  |- ConditionalExpression
-         |     |     |  |  |- PrimaryExpression
-         |     |     |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |     |  |  |  |- PrimaryIdentifier
-         |     |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_ACPI_VIDEO  
-         |     |     |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-         |     |     |  |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
-         |     |     |  |  |- FunctionCall
-         |     |     |  |  |  |- PrimaryIdentifier
-         |     |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>acpi_video_bus_put_one_device_V1  
-         |     |     |  |  |  |- ExpressionList
-         |     |     |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |     |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-         |     |     |  |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
-         |     |     |  |  |- FunctionCall
-         |     |     |  |     |- PrimaryIdentifier
-         |     |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>acpi_video_bus_put_one_device  
-         |     |     |  |     |- ExpressionList
-         |     |     |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |     |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-         |     |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |     |- FunctionCall
+         |     |     |  |- PrimaryIdentifier
+         |     |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>acpi_video_bus_put_one_device_V1  
+         |     |     |  |- ExpressionList
+         |     |     |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |     |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |     |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
          |     |- ReturnStatement
          |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  

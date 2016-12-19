@@ -1,4 +1,7 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_DRM_I915;
+int _reconfig_CONFIG_SHMEM;
+int _reconfig_CONFIG_TMPFS;
+
 typedef int filler_t (int);
 
 int some_fun (int n)
@@ -10,13 +13,13 @@ int some_fun (int n)
 filler_t* f_V0 = ((void*) 0);
 
 // defined(CONFIG_TMPFS)
-filler_t* f_V1 = (& some_fun);
+filler_t* f_V1 = & some_fun;
 
 // defined(CONFIG_SHMEM) || defined(CONFIG_TMPFS)
 filler_t* shmem_get_inode_V2 ()
 {
     return (
-            ((!_reconfig_CONFIG_TMPFS))
+            (!_reconfig_CONFIG_TMPFS)
             ? f_V0
             : f_V1);
 }
@@ -24,7 +27,7 @@ filler_t* shmem_get_inode_V2 ()
 // !defined(CONFIG_TMPFS) && !defined(CONFIG_SHMEM)
 filler_t* ramfs_get_inode_V3 ()
 {
-    return (& some_fun);
+    return & some_fun;
 }
 
 filler_t* shmem_file_setup ()
@@ -38,7 +41,7 @@ filler_t* shmem_file_setup ()
 // defined(CONFIG_DRM_I915)
 int drm_gem_object_init_V4 (filler_t** readpage)
 {
-    (* readpage = shmem_file_setup ());
+    * readpage = shmem_file_setup ();
     return 0;
 }
 
@@ -59,7 +62,7 @@ void do_read_cache_page_V4 (filler_t* filler)
 void read_cache_page_gfp_V4 (filler_t** readpage)
 {
     filler_t* filler;
-    (filler = (* readpage));
+    filler = * readpage;
     do_read_cache_page_V4 (filler);
 }
 
@@ -111,7 +114,7 @@ int i915_load_modeset_init_V4 (filler_t** readpage)
 int i915_driver_load_V4 ()
 {
     filler_t* readpage;
-    return i915_load_modeset_init_V4 ((& readpage));
+    return i915_load_modeset_init_V4 (& readpage);
 }
 
 int main ()

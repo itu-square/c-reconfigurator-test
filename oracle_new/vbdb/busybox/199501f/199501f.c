@@ -1,15 +1,17 @@
-#include "/home/alex/reconfigurator_old/vbdb/busybox/simple-target/REconfig.c"
+int _reconfig_ENABLE_FEATURE_MODPROBE_MULTIPLE_OPTIONS;
+
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 void build_dep (void)
 {
     char* dt;
-    (dt = NULL);
+    dt = NULL;
     if (rand () % 2)
     {
-        (dt = "-i");
+        dt = "-i";
     }
     if ((_reconfig_ENABLE_FEATURE_MODPROBE_MULTIPLE_OPTIONS))
     {

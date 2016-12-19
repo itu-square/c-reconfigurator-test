@@ -23,9 +23,6 @@ static int acpi_video_bus_put_one_device_V1 ()
 int main (int argc , char** argv)
 {
     if ((_reconfig_CONFIG_ACPI && _reconfig_CONFIG_STUB_POULSBO))
-         (
-                                                                   (_reconfig_CONFIG_ACPI_VIDEO)
-                                                                   ? acpi_video_bus_put_one_device_V1 ()
-                                                                   : acpi_video_bus_put_one_device ());
+         acpi_video_bus_put_one_device_V1 ();
     return 0;
 }

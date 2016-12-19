@@ -19,14 +19,8 @@ int twl_probe_V1 ()
     int* ops;
     ops = (void*) 0;
     if ((_reconfig_CONFIG_OF_IRQ))
-         ops = (
-                                          (_reconfig_CONFIG_IRQ_DOMAIN)
-                                          ? & irq_domain_simple_ops_V0
-                                          : & irq_domain_simple_ops);
-    (
-     (_reconfig_CONFIG_IRQ_DOMAIN)
-     ? irq_domain_add_V0 (ops)
-     : irq_domain_add (ops));
+         ops = & irq_domain_simple_ops_V0;
+    irq_domain_add_V0 (ops);
 }
 
 int main ()

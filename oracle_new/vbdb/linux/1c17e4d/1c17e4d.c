@@ -1,4 +1,6 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_RCU_FAST_NO_HZ;
+int _reconfig_CONFIG_RCU_CPU_STALL_INFO;
+
 extern int printf (const char* __restrict __format , ...);
 
 extern int sprintf (char* __restrict __s , const char* __restrict __format , ...) __attribute__ ((__nothrow__));
@@ -19,7 +21,7 @@ void print_cpu_stall_info_V2 (int cpu)
 {
     char fast_no_hz [ 72 ];
     (
-     (_reconfig_CONFIG_RCU_CPU_STALL_INFO && _reconfig_CONFIG_RCU_FAST_NO_HZ)
+     (_reconfig_CONFIG_RCU_FAST_NO_HZ)
      ? print_cpu_stall_fast_no_hz_V0 (fast_no_hz , cpu)
      : print_cpu_stall_fast_no_hz_V1 (fast_no_hz , cpu));
     printf ("\t%d: %s\n" , cpu , fast_no_hz);

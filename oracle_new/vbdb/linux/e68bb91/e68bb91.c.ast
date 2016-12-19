@@ -8,9 +8,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_dw_init_V0  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -25,9 +27,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_dw_init_V1  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -45,11 +49,12 @@
          |        |- ParameterTypeListOpt
          |        |  |- ParameterTypeList
          |        |     |- ParameterList
-         |        |        |- ParameterDeclaration
+         |        |        |- ParameterAbstractDeclaration
          |        |           |- xtc.lang.cpp.Syntax.Language<VOID>void  
          |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
          |- CompoundStatement
+         |  |- LocalLabelDeclarationListOpt
          |  |- DeclarationOrStatementList
          |     |- SelectionStatement
          |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
