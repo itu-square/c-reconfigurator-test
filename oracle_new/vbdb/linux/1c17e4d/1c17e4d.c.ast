@@ -1,0 +1,321 @@
+|- TranslationUnit
+   |- ExternalDeclarationList
+      |- Declaration
+      |  |- DeclaringList
+      |  |  |- BasicDeclarationSpecifier
+      |  |  |  |- DeclarationQualifierList
+      |  |  |  |  |- xtc.lang.cpp.Syntax.Language<EXTERN>extern  
+      |  |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
+      |  |  |- FunctionDeclarator
+      |  |     |- SimpleDeclarator
+      |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>printf  
+      |  |     |- PostfixingFunctionDeclarator
+      |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
+      |  |        |  |- ParameterTypeList
+      |  |        |     |- ParameterList
+      |  |        |     |  |- ParameterDeclaration
+      |  |        |     |     |- BasicTypeSpecifier
+      |  |        |     |     |  |- TypeQualifierList
+      |  |        |     |     |  |  |- TypeQualifier
+      |  |        |     |     |  |     |- ConstQualifier
+      |  |        |     |     |  |        |- xtc.lang.cpp.Syntax.Language<CONST>const  
+      |  |        |     |     |  |- xtc.lang.cpp.Syntax.Language<CHAR>char  
+      |  |        |     |     |- UnaryIdentifierDeclarator
+      |  |        |     |        |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |     |        |- TypeQualifierList
+      |  |        |     |        |  |- TypeQualifier
+      |  |        |     |        |     |- RestrictQualifier
+      |  |        |     |        |        |- xtc.lang.cpp.Syntax.Language<__RESTRICT>__restrict  
+      |  |        |     |        |- SimpleDeclarator
+      |  |        |     |           |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>__format  
+      |  |        |     |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |        |     |- xtc.lang.cpp.Syntax.Language<ELLIPSIS>...  
+      |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+      |- Declaration
+      |  |- DeclaringList
+      |  |  |- BasicDeclarationSpecifier
+      |  |  |  |- DeclarationQualifierList
+      |  |  |  |  |- xtc.lang.cpp.Syntax.Language<EXTERN>extern  
+      |  |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
+      |  |  |- FunctionDeclarator
+      |  |  |  |- SimpleDeclarator
+      |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>sprintf  
+      |  |  |  |- PostfixingFunctionDeclarator
+      |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |  |     |- ParameterTypeListOpt
+      |  |  |     |  |- ParameterTypeList
+      |  |  |     |     |- ParameterList
+      |  |  |     |     |  |- ParameterDeclaration
+      |  |  |     |     |  |  |- xtc.lang.cpp.Syntax.Language<CHAR>char  
+      |  |  |     |     |  |  |- UnaryIdentifierDeclarator
+      |  |  |     |     |  |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |  |     |     |  |     |- TypeQualifierList
+      |  |  |     |     |  |     |  |- TypeQualifier
+      |  |  |     |     |  |     |     |- RestrictQualifier
+      |  |  |     |     |  |     |        |- xtc.lang.cpp.Syntax.Language<__RESTRICT>__restrict  
+      |  |  |     |     |  |     |- SimpleDeclarator
+      |  |  |     |     |  |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>__s  
+      |  |  |     |     |  |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |  |     |     |  |- ParameterDeclaration
+      |  |  |     |     |     |- BasicTypeSpecifier
+      |  |  |     |     |     |  |- TypeQualifierList
+      |  |  |     |     |     |  |  |- TypeQualifier
+      |  |  |     |     |     |  |     |- ConstQualifier
+      |  |  |     |     |     |  |        |- xtc.lang.cpp.Syntax.Language<CONST>const  
+      |  |  |     |     |     |  |- xtc.lang.cpp.Syntax.Language<CHAR>char  
+      |  |  |     |     |     |- UnaryIdentifierDeclarator
+      |  |  |     |     |        |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |  |     |     |        |- TypeQualifierList
+      |  |  |     |     |        |  |- TypeQualifier
+      |  |  |     |     |        |     |- RestrictQualifier
+      |  |  |     |     |        |        |- xtc.lang.cpp.Syntax.Language<__RESTRICT>__restrict  
+      |  |  |     |     |        |- SimpleDeclarator
+      |  |  |     |     |           |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>__format  
+      |  |  |     |     |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |  |     |     |- xtc.lang.cpp.Syntax.Language<ELLIPSIS>...  
+      |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |  |- AttributeSpecifierListOpt
+      |  |     |- AttributeSpecifierList
+      |  |        |- AttributeSpecifier
+      |  |           |- AttributeKeyword
+      |  |           |  |- xtc.lang.cpp.Syntax.Language<__ATTRIBUTE__>__attribute__  
+      |  |           |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |           |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |           |- AttributeListOpt
+      |  |           |  |- AttributeList
+      |  |           |     |- Word
+      |  |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>__nothrow__  
+      |  |           |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |           |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+      |- FunctionDefinition
+      |  |- FunctionPrototype
+      |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
+      |  |  |- FunctionDeclarator
+      |  |     |- SimpleDeclarator
+      |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>print_cpu_stall_fast_no_hz_V0  
+      |  |     |- PostfixingFunctionDeclarator
+      |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
+      |  |        |  |- ParameterTypeList
+      |  |        |     |- ParameterList
+      |  |        |        |- ParameterDeclaration
+      |  |        |        |  |- xtc.lang.cpp.Syntax.Language<CHAR>char  
+      |  |        |        |  |- UnaryIdentifierDeclarator
+      |  |        |        |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |        |     |- SimpleDeclarator
+      |  |        |        |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cp  
+      |  |        |        |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |        |        |- ParameterDeclaration
+      |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
+      |  |        |           |- SimpleDeclarator
+      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu  
+      |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+      |  |- CompoundStatement
+      |  |  |- DeclarationOrStatementList
+      |  |     |- ExpressionStatement
+      |  |        |- FunctionCall
+      |  |        |  |- PrimaryIdentifier
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>sprintf  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |  |- ExpressionList
+      |  |        |  |  |- PrimaryIdentifier
+      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cp  
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |        |  |  |- StringLiteralList
+      |  |        |  |     |- xtc.lang.cpp.Syntax.Text<STRINGliteral>"foobar"  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+      |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
+      |- FunctionDefinition
+      |  |- FunctionPrototype
+      |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
+      |  |  |- FunctionDeclarator
+      |  |     |- SimpleDeclarator
+      |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>print_cpu_stall_fast_no_hz_V1  
+      |  |     |- PostfixingFunctionDeclarator
+      |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
+      |  |        |  |- ParameterTypeList
+      |  |        |     |- ParameterList
+      |  |        |        |- ParameterDeclaration
+      |  |        |        |  |- xtc.lang.cpp.Syntax.Language<CHAR>char  
+      |  |        |        |  |- UnaryIdentifierDeclarator
+      |  |        |        |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |        |        |     |- SimpleDeclarator
+      |  |        |        |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cp  
+      |  |        |        |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |        |        |- ParameterDeclaration
+      |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
+      |  |        |           |- SimpleDeclarator
+      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu  
+      |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+      |  |- CompoundStatement
+      |  |  |- DeclarationOrStatementList
+      |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
+      |- FunctionDefinition
+      |  |- FunctionPrototype
+      |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
+      |  |  |- FunctionDeclarator
+      |  |     |- SimpleDeclarator
+      |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>print_cpu_stall_info_V2  
+      |  |     |- PostfixingFunctionDeclarator
+      |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
+      |  |        |  |- ParameterTypeList
+      |  |        |     |- ParameterList
+      |  |        |        |- ParameterDeclaration
+      |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
+      |  |        |           |- SimpleDeclarator
+      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu  
+      |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+      |  |- CompoundStatement
+      |  |  |- DeclarationOrStatementList
+      |  |     |- Declaration
+      |  |     |  |- DeclaringList
+      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<CHAR>char  
+      |  |     |  |  |- ArrayDeclarator
+      |  |     |  |     |- SimpleDeclarator
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>fast_no_hz  
+      |  |     |  |     |- ArrayAbstractDeclarator
+      |  |     |  |        |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
+      |  |     |  |        |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>72  
+      |  |     |  |        |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
+      |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+      |  |     |- ExpressionStatement
+      |  |     |  |- PrimaryExpression
+      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |  |- ConditionalExpression
+      |  |     |  |  |  |- PrimaryExpression
+      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |  |  |  |- LogicalAndExpression
+      |  |     |  |  |  |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_RCU_CPU_STALL_INFO  
+      |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ANDAND>&&  
+      |  |     |  |  |  |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_RCU_FAST_NO_HZ  
+      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
+      |  |     |  |  |  |- FunctionCall
+      |  |     |  |  |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>print_cpu_stall_fast_no_hz_V0  
+      |  |     |  |  |  |  |- ExpressionList
+      |  |     |  |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |  |  |     |- ExpressionList
+      |  |     |  |  |  |     |  |- PrimaryIdentifier
+      |  |     |  |  |  |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>fast_no_hz  
+      |  |     |  |  |  |     |  |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |     |  |  |  |     |  |- PrimaryIdentifier
+      |  |     |  |  |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu  
+      |  |     |  |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
+      |  |     |  |  |  |- FunctionCall
+      |  |     |  |  |     |- PrimaryIdentifier
+      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>print_cpu_stall_fast_no_hz_V1  
+      |  |     |  |  |     |- ExpressionList
+      |  |     |  |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |  |        |- ExpressionList
+      |  |     |  |  |        |  |- PrimaryIdentifier
+      |  |     |  |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>fast_no_hz  
+      |  |     |  |  |        |  |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |     |  |  |        |  |- PrimaryIdentifier
+      |  |     |  |  |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu  
+      |  |     |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+      |  |     |- ExpressionStatement
+      |  |        |- FunctionCall
+      |  |        |  |- PrimaryIdentifier
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>printf  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |  |- ExpressionList
+      |  |        |  |  |- StringLiteralList
+      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Text<STRINGliteral>"\t%d: %s\n"  
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |        |  |  |- PrimaryIdentifier
+      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu  
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |        |  |  |- PrimaryIdentifier
+      |  |        |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>fast_no_hz  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+      |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
+      |- FunctionDefinition
+      |  |- FunctionPrototype
+      |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
+      |  |  |- FunctionDeclarator
+      |  |     |- SimpleDeclarator
+      |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>print_cpu_stall_info_V3  
+      |  |     |- PostfixingFunctionDeclarator
+      |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
+      |  |        |  |- ParameterTypeList
+      |  |        |     |- ParameterList
+      |  |        |        |- ParameterDeclaration
+      |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
+      |  |        |           |- SimpleDeclarator
+      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu  
+      |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+      |  |- CompoundStatement
+      |  |  |- DeclarationOrStatementList
+      |  |     |- ExpressionStatement
+      |  |        |- FunctionCall
+      |  |        |  |- PrimaryIdentifier
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>printf  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |  |- ExpressionList
+      |  |        |  |  |- StringLiteralList
+      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Text<STRINGliteral>" %d"  
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<COMMA>,  
+      |  |        |  |  |- PrimaryIdentifier
+      |  |        |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+      |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
+      |- FunctionDefinition
+         |- FunctionPrototype
+         |  |- xtc.lang.cpp.Syntax.Language<INT>int  
+         |  |- FunctionDeclarator
+         |     |- SimpleDeclarator
+         |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>main  
+         |     |- PostfixingFunctionDeclarator
+         |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |        |- ParameterTypeListOpt
+         |        |  |- ParameterTypeList
+         |        |     |- ParameterList
+         |        |        |- ParameterDeclaration
+         |        |           |- xtc.lang.cpp.Syntax.Language<VOID>void  
+         |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+         |- CompoundStatement
+         |  |- DeclarationOrStatementList
+         |     |- SelectionStatement
+         |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
+         |     |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |  |- PrimaryExpression
+         |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |  |  |- PrimaryIdentifier
+         |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_RCU_CPU_STALL_INFO  
+         |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |  |- ExpressionStatement
+         |     |     |- FunctionCall
+         |     |     |  |- PrimaryIdentifier
+         |     |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>print_cpu_stall_info_V2  
+         |     |     |  |- ExpressionList
+         |     |     |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |     |     |- ExpressionList
+         |     |     |     |  |- xtc.lang.cpp.Syntax.Text<OCTALconstant>0  
+         |     |     |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |     |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+         |     |- ReturnStatement
+         |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
+         |        |- xtc.lang.cpp.Syntax.Text<OCTALconstant>0  
+         |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
+         |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
