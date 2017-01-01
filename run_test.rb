@@ -198,6 +198,153 @@ def oracleBC (file)
 	folder("oracle", file, ".bc")
 end
 
+@configs_H = Hash.new("")
+@configs_H["76baeeb"] = [
+							[],
+							["CONFIG_X86_32"],
+							["CONFIG_NUMA"],
+							["CONFIG_DEBUG_PER_CPU_MAPS"],
+							["CONFIG_PCI"],
+							["CONFIG_X86_64"],
+							["CONFIG_X86_32", "CONFIG_NUMA"],
+							["CONFIG_X86_32", "CONFIG_DEBUG_PER_CPU_MAPS"],
+							["CONFIG_X86_32", "CONFIG_PCI"],
+							["CONFIG_NUMA", "CONFIG_DEBUG_PER_CPU_MAPS"],
+							["CONFIG_NUMA", "CONFIG_PCI"],
+							["CONFIG_NUMA", "CONFIG_X86_64"],
+							["CONFIG_DEBUG_PER_CPU_MAPS", "CONFIG_PCI"],
+							["CONFIG_DEBUG_PER_CPU_MAPS", "CONFIG_X86_64"],
+							["CONFIG_PCI", "CONFIG_X86_64"],
+							["CONFIG_X86_32", "CONFIG_NUMA", "CONFIG_DEBUG_PER_CPU_MAPS"],
+							["CONFIG_X86_32", "CONFIG_NUMA", "CONFIG_PCI"],
+							["CONFIG_X86_32", "CONFIG_DEBUG_PER_CPU_MAPS", "CONFIG_PCI"],
+							["CONFIG_NUMA", "CONFIG_DEBUG_PER_CPU_MAPS", "CONFIG_PCI"],
+							["CONFIG_NUMA", "CONFIG_DEBUG_PER_CPU_MAPS", "CONFIG_X86_64"],
+							["CONFIG_NUMA", "CONFIG_PCI", "CONFIG_X86_64"],
+							["CONFIG_DEBUG_PER_CPU_MAPS", "CONFIG_PCI", "CONFIG_X86_64"],
+							["CONFIG_X86_32", "CONFIG_NUMA", "CONFIG_DEBUG_PER_CPU_MAPS", "CONFIG_PCI"],
+							["CONFIG_NUMA", "CONFIG_DEBUG_PER_CPU_MAPS", "CONFIG_PCI", "CONFIG_X86_64"]]
+@configs_H["f7ab9b4"] = [
+							[],
+							["CONFIG_SHMEM"],
+							["CONFIG_DRM_I915"],
+							["CONFIG_TMPFS", "CONFIG_SHMEM"],
+							["CONFIG_SHMEM", "CONFIG_DRM_I915"],
+							["CONFIG_TMPFS", "CONFIG_SHMEM", "CONFIG_DRM_I915"]]
+@configs_H["ee3f34e"] = [
+							[],
+							["CONFIG_SCTP_DBG_MSG"],
+							["CONFIG_IP_SCTP"],
+							["CONFIG_SCTP_DBG_MSG", "CONFIG_IP_SCTP"],
+							["CONFIG_IPV6"],
+							["CONFIG_SCTP_DBG_MSG", "CONFIG_IPV6"],
+							["CONFIG_IP_SCTP", "CONFIG_IPV6"],
+							["CONFIG_SCTP_DBG_MSG", "CONFIG_IP_SCTP", "CONFIG_IPV6"]]
+@configs_H["6252547"] = [
+							[],
+							["CONFIG_IRQ_DOMAIN"],
+							["CONFIG_OF_IRQ"],
+							["CONFIG_TWL4030_CORE", "CONFIG_IRQ_DOMAIN"],
+							["CONFIG_IRQ_DOMAIN", "CONFIG_OF_IRQ"],
+							["CONFIG_TWL4030_CORE", "CONFIG_IRQ_DOMAIN", "CONFIG_OF_IRQ"]]
+@configs_H["0f8f809"] = [
+							[],
+							["CONFIG_FORCE_MAX_ZONEORDER"],
+							["CONFIG_PPC_256K_PAGES"],
+							["CONFIG_PPC_64K_PAGES"],
+							["CONFIG_PPC_16K_PAGES"],
+							["CONFIG_SLAB"],
+							["CONFIG_SLOB"],
+							["CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_256K_PAGES"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_64K_PAGES"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_16K_PAGES"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_SLAB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_SLOB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_256K_PAGES", "CONFIG_SLAB"],
+							["CONFIG_PPC_256K_PAGES", "CONFIG_SLOB"],
+							["CONFIG_PPC_256K_PAGES", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_64K_PAGES", "CONFIG_SLAB"],
+							["CONFIG_PPC_64K_PAGES", "CONFIG_SLOB"],
+							["CONFIG_PPC_64K_PAGES", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_16K_PAGES", "CONFIG_SLAB"],
+							["CONFIG_PPC_16K_PAGES", "CONFIG_SLOB"],
+							["CONFIG_PPC_16K_PAGES", "CONFIG_LOCKDEP"],
+							["CONFIG_SLAB", "CONFIG_SLOB"],
+							["CONFIG_SLAB", "CONFIG_LOCKDEP"],
+							["CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_256K_PAGES", "CONFIG_SLAB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_256K_PAGES", "CONFIG_SLOB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_256K_PAGES", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_64K_PAGES", "CONFIG_SLAB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_64K_PAGES", "CONFIG_SLOB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_64K_PAGES", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_16K_PAGES", "CONFIG_SLAB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_16K_PAGES", "CONFIG_SLOB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_16K_PAGES", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_SLAB", "CONFIG_SLOB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_SLAB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_256K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB"],
+							["CONFIG_PPC_256K_PAGES", "CONFIG_SLAB", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_256K_PAGES", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_64K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB"],
+							["CONFIG_PPC_64K_PAGES", "CONFIG_SLAB", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_64K_PAGES", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_16K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB"],
+							["CONFIG_PPC_16K_PAGES", "CONFIG_SLAB", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_16K_PAGES", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_SLAB", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_256K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_256K_PAGES", "CONFIG_SLAB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_256K_PAGES", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_64K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_64K_PAGES", "CONFIG_SLAB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_64K_PAGES", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_16K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_16K_PAGES", "CONFIG_SLAB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_16K_PAGES", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_SLAB", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_64K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_PPC_16K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_256K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_64K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB", "CONFIG_LOCKDEP"],
+							["CONFIG_FORCE_MAX_ZONEORDER", "CONFIG_PPC_16K_PAGES", "CONFIG_SLAB", "CONFIG_SLOB", "CONFIG_LOCKDEP"]]
+@configs_H["7c6048b"] = [
+							[],
+							["CONFIG_ACPI"],
+							["CONFIG_BACKLIGHT_CLASS_DEVICE"],
+							["CONFIG_ACPI_VIDEO"],
+							["CONFIG_ACPI", "CONFIG_BACKLIGHT_CLASS_DEVICE"],
+							["CONFIG_ACPI", "CONFIG_ACPI_VIDEO"],
+							["CONFIG_BACKLIGHT_CLASS_DEVICE", "CONFIG_ACPI_VIDEO"],
+							["CONFIG_ACPI", "CONFIG_BACKLIGHT_CLASS_DEVICE", "CONFIG_ACPI_VIDEO"],
+							["CONFIG_STUB_POULSBO"],
+							["CONFIG_BACKLIGHT_CLASS_DEVICE", "CONFIG_STUB_POULSBO"],
+							["CONFIG_ACPI_VIDEO", "CONFIG_STUB_POULSBO"],
+							["CONFIG_ACPI", "CONFIG_ACPI_VIDEO", "CONFIG_STUB_POULSBO"],
+							["CONFIG_BACKLIGHT_CLASS_DEVICE", "CONFIG_ACPI_VIDEO", "CONFIG_STUB_POULSBO"],
+							["CONFIG_ACPI", "CONFIG_BACKLIGHT_CLASS_DEVICE", "CONFIG_ACPI_VIDEO", "CONFIG_STUB_POULSBO"]]
+@configs_H["6651791"] = [
+							[],
+							["CONFIG_I2C"],
+							["CONFIG_SND_SOC_DA7210"],
+							["CONFIG_SND_SOC_AK4642"],
+							["CONFIG_SND_FSI_AK4642", "CONFIG_SND_SOC_AK4642"],
+							["CONFIG_SND_FSI_DA7210", "CONFIG_SND_SOC_DA7210"],
+							["CONFIG_I2C", "CONFIG_SND_SOC_DA7210"],
+							["CONFIG_I2C", "CONFIG_SND_SOC_AK4642"],
+							["CONFIG_SND_SOC_DA7210", "CONFIG_SND_SOC_AK4642"],
+							["CONFIG_SND_FSI_AK4642", "CONFIG_I2C", "CONFIG_SND_SOC_AK4642"],
+							["CONFIG_SND_FSI_AK4642", "CONFIG_SND_SOC_DA7210", "CONFIG_SND_SOC_AK4642"],
+							["CONFIG_SND_FSI_DA7210", "CONFIG_SND_SOC_DA7210", "CONFIG_SND_SOC_AK4642"],
+							["CONFIG_I2C", "CONFIG_SND_SOC_DA7210", "CONFIG_SND_SOC_AK4642"],
+							["CONFIG_SND_FSI_AK4642", "CONFIG_SND_FSI_DA7210", "CONFIG_SND_SOC_DA7210", "CONFIG_SND_SOC_AK4642"],
+							["CONFIG_SND_FSI_AK4642", "CONFIG_I2C", "CONFIG_SND_SOC_DA7210", "CONFIG_SND_SOC_AK4642"],
+							["CONFIG_SND_FSI_DA7210", "CONFIG_I2C", "CONFIG_SND_SOC_DA7210", "CONFIG_SND_SOC_AK4642"],
+							["CONFIG_SND_FSI_AK4642", "CONFIG_SND_FSI_DA7210", "CONFIG_I2C", "CONFIG_SND_SOC_DA7210", "CONFIG_SND_SOC_AK4642"]]
+
 
 def configs(file)
   name  = /(?<macro>[A-Z0-9_]+)/
@@ -232,27 +379,48 @@ if (ARGV[0] != nil && ARGV[0] == "-bf")
 		print id.to_s.rjust(4, ' ') + " |"
 		print file.rjust(8, ' ') + " |"
 		
-		cfgs = configs(source(file))
-		print cfgs.size.to_s.rjust(12, ' ') + " |"
+#		cfgs = configs(source(file))
+#		
 		
+#		puts
+#		cid = 0
+#		for cfg in cfgs
+#			cid = cid + 1
+#			puts cid.to_s + " " + config_opts(cfg)
+#			run_command("mkdir -p variant/#{@files_H[file]}#{file}_V#{cid}")
+#			" ===> " + command = "clang-3.5 -E #{config_opts(cfg)} -I source/#{@files_H[file]}#{file} -o variant/#{@files_H[file]}#{file}_V#{cid}/#{file}.c #{source(file)}"
+#			"\n" + run_command(command)
+#		end
+#		puts
+#		puts
 
 		cid = 0
+		cfgs = [[]]
+		if (@configs_H.keys.include?(file))
+#			puts "configs hard coded"
+			cfgs = @configs_H[file]
+		else
+#			puts "configs computed"
+			cfgs = configs(source(file))
+		end
 		for cfg in cfgs
 			cid = cid + 1
-			cid.to_s + " " + config_opts(cfg)
+#			puts cid.to_s + " " + config_opts(cfg)
 			run_command("mkdir -p variant/#{@files_H[file]}#{file}_V#{cid}")
 			" ===> " + command = "clang-3.5 -E #{config_opts(cfg)} -I source/#{@files_H[file]}#{file} -o variant/#{@files_H[file]}#{file}_V#{cid}/#{file}.c #{source(file)}"
 			"\n" + run_command(command)
 		end
 
+		print cfgs.size.to_s.rjust(12, ' ') + " |"
+
 		" ===> " + command = (1..cid).map{ |i| "frama-c -val -quiet variant/#{@files_H[file]}#{file}_V#{i}/#{file}.c"}.join(" ; ")
-		print command_median_repeat(command, 5).rjust(17, ' ') + " |"
+		print command_median_repeat(command, 50).rjust(17, ' ') + " |"
 		
 		" ===> " + command = (1..cid).map{ |i| "clang-3.5 -c -g -emit-llvm -Wall -o variant/#{@files_H[file]}#{file}_V#{i}/#{file}.bc variant/#{@files_H[file]}#{file}_V#{i}/#{file}.c"}.join(" ; ")
-		print command_median_repeat(command, 5).rjust(15, ' ') + " |"
+		print command_median_repeat(command, 50).rjust(15, ' ') + " |"
 		
 		" ===> " + command = (1..cid).map{ |i| "llbmc #{@llbmc_args_H[file]} variant/#{@files_H[file]}#{file}_V#{i}/#{file}.bc"}.join(" ; ")
-		print command_median_repeat(command, 5).rjust(15, ' ') + " |"
+		print command_median_repeat(command, 50).rjust(15, ' ') + " |"
 		
 		puts
 	end
