@@ -424,6 +424,15 @@ if (ARGV[0] != nil && ARGV[0] == "-bf")
 		
 		puts
 	end
+
+elsif (ARGV[0] != nil && ARGV[0] == "-reconfig")
+	for file in @files_H.keys
+		run_command("mkdir -p target/#{@files_H[file]}#{file}")
+		command = "java -Xms2048m -Xmx10240m -Xss128m -jar reconfigurator.jar -source #{Dir.pwd}/#{source(file)} -target #{Dir.pwd}/#{target(file)} -oracle #{Dir.pwd}/#{oracle(file)}.ast -I #{Dir.pwd}/source/#{@files_H[file]}#{file} -reconfigureIncludes"
+		puts "\n" + run_command(command)
+		puts
+	end
+
 elsif (ARGV[0] != nil)
 	if (@files_H.keys.include?(ARGV[0]))
 		file = ARGV[0]
@@ -439,7 +448,7 @@ elsif (ARGV[0] != nil)
 		puts "\n" + run_command(command)
 		puts
 		run_command("mkdir -p target/#{@files_H[file]}#{file}")
-		puts " ===> " + command = "java -Xms2048m -Xmx10240m -Xss128m -jar reconfigurator.jar -source #{Dir.pwd}/#{source(file)} -target #{Dir.pwd}/#{target(file)} -oracle #{Dir.pwd}/#{oracle(file)} -include #{Dir.pwd}/source/#{@files_H[file]}#{file}"
+		puts " ===> " + command = "java -Xms2048m -Xmx10240m -Xss128m -jar reconfigurator.jar -source #{Dir.pwd}/#{source(file)} -target #{Dir.pwd}/#{target(file)} -oracle #{Dir.pwd}/#{oracle(file)}.ast -I #{Dir.pwd}/source/#{@files_H[file]}#{file} -reconfigureIncludes"
 		puts "\n" + run_command(command)
 		puts
 		puts "--------------------------------------------------------------"
@@ -491,7 +500,7 @@ else
 		run_command("clang-3.5 -E#{@variant_config_H[file]} -I source/#{@files_H[file]}#{file} -o #{variant(file)} #{source(file)}")
 
 		run_command("mkdir -p target/#{@files_H[file]}#{file}")
-		run_command("java -Xms2048m -Xmx10240m -Xss128m -jar reconfigurator.jar -source #{Dir.pwd}/#{source(file)} -target #{Dir.pwd}/#{target(file)} -oracle #{Dir.pwd}/#{oracle(file)} -I source/#{@files_H[file]}#{file}")
+		run_command("java -Xms2048m -Xmx10240m -Xss128m -jar reconfigurator.jar -source #{Dir.pwd}/#{source(file)} -target #{Dir.pwd}/#{target(file)} -oracle #{Dir.pwd}/#{oracle(file)}.ast -I #{Dir.pwd}/source/#{@files_H[file]}#{file} -reconfigureIncludes")
 
 		print run_command("stat --printf=\"%s\" #{source(file)}").rjust(7, ' ') + " |"
 		print run_command("stat --printf=\"%s\" #{target(file)}").rjust(7, ' ') + " |"

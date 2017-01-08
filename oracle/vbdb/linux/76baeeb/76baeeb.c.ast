@@ -9,6 +9,8 @@
       |  |  |  |- ArrayAbstractDeclarator
       |  |  |     |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
       |  |  |     |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
@@ -24,7 +26,10 @@
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<UNSIGNED>unsigned  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<LONG>long  
       |  |  |- SimpleDeclarator
-      |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpumask_t  
+      |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpumask_t  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
+      |  |  |- InitializerOpt
       |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |- Declaration
       |  |- DeclaringList
@@ -32,6 +37,8 @@
       |  |  |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>cpumask_t  
       |  |  |- SimpleDeclarator
       |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu_none_mask  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
@@ -43,6 +50,8 @@
       |  |  |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>cpumask_t  
       |  |  |- SimpleDeclarator
       |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu_online_mask  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
@@ -52,27 +61,33 @@
       |  |- DeclaringList
       |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |  |- SimpleDeclarator
-      |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>nr_node_ids_V0  
+      |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>nr_node_ids_V0  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
+      |  |  |- InitializerOpt
       |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |- Declaration
       |  |- DeclaringList
       |  |  |- TypedefTypeSpecifier
       |  |  |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>cpumask_t  
       |  |  |- UnaryIdentifierDeclarator
-      |  |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |     |- ArrayDeclarator
-      |  |        |- SimpleDeclarator
-      |  |        |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_to_cpumask_map_V0  
-      |  |        |- ArrayAbstractDeclarator
-      |  |           |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
-      |  |           |- PrimaryExpression
-      |  |           |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |           |  |- ShiftExpression
-      |  |           |  |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
-      |  |           |  |  |- xtc.lang.cpp.Syntax.Language<LS><<  
-      |  |           |  |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>8  
-      |  |           |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |           |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
+      |  |  |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |  |  |- ArrayDeclarator
+      |  |  |     |- SimpleDeclarator
+      |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_to_cpumask_map_V0  
+      |  |  |     |- ArrayAbstractDeclarator
+      |  |  |        |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
+      |  |  |        |- PrimaryExpression
+      |  |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |  |        |  |- ShiftExpression
+      |  |  |        |  |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
+      |  |  |        |  |  |- xtc.lang.cpp.Syntax.Language<LS><<  
+      |  |  |        |  |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>8  
+      |  |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |  |        |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
+      |  |  |- InitializerOpt
       |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |- FunctionDefinition
       |  |- FunctionPrototype
@@ -85,11 +100,12 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterAbstractDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- Declaration
       |  |     |  |- DeclaringList
@@ -97,20 +113,20 @@
       |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<UNSIGNED>unsigned  
       |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |     |  |  |- SimpleDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
+      |  |     |  |  |- InitializerOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- IterationStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<FOR>for  
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |- PrimaryExpression
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |- AssignmentExpression
-      |  |        |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |        |  |  |- AssignmentOperator
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<OCTALconstant>0  
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- AssignmentExpression
+      |  |        |  |- PrimaryIdentifier
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |        |  |- AssignmentOperator
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |        |  |- xtc.lang.cpp.Syntax.Text<OCTALconstant>0  
       |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |        |- RelationalExpression
       |  |        |  |- PrimaryIdentifier
@@ -119,39 +135,27 @@
       |  |        |  |- PrimaryIdentifier
       |  |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>nr_node_ids_V0  
       |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
-      |  |        |- PrimaryExpression
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |- Increment
-      |  |        |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<ICR>++  
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- Increment
+      |  |        |  |- PrimaryIdentifier
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<ICR>++  
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |        |- ExpressionStatement
-      |  |           |- PrimaryExpression
-      |  |           |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |           |  |- PrimaryExpression
-      |  |           |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |           |  |  |- AssignmentExpression
-      |  |           |  |  |  |- Subscript
-      |  |           |  |  |  |  |- PrimaryIdentifier
-      |  |           |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_to_cpumask_map_V0  
-      |  |           |  |  |  |  |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
-      |  |           |  |  |  |  |- PrimaryIdentifier
-      |  |           |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |           |  |  |  |  |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
-      |  |           |  |  |  |- AssignmentOperator
-      |  |           |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |           |  |  |  |- PrimaryExpression
-      |  |           |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |           |  |  |     |- UnaryExpression
-      |  |           |  |  |     |  |- Unaryoperator
-      |  |           |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<AND>&  
-      |  |           |  |  |     |  |- PrimaryIdentifier
-      |  |           |  |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu_online_mask  
-      |  |           |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |           |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |           |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |           |- AssignmentExpression
+      |  |           |  |- Subscript
+      |  |           |  |  |- PrimaryIdentifier
+      |  |           |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_to_cpumask_map_V0  
+      |  |           |  |  |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
+      |  |           |  |  |- PrimaryIdentifier
+      |  |           |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |           |  |  |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
+      |  |           |  |- AssignmentOperator
+      |  |           |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |           |  |- UnaryExpression
+      |  |           |     |- Unaryoperator
+      |  |           |     |  |- xtc.lang.cpp.Syntax.Language<AND>&  
+      |  |           |     |- PrimaryIdentifier
+      |  |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu_online_mask  
       |  |           |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
       |- FunctionDefinition
@@ -159,14 +163,12 @@
       |  |  |- TypedefDeclarationSpecifier
       |  |  |  |- DeclarationQualifierList
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |  |  |- TypeQualifier
-      |  |  |  |  |     |- FunctionSpecifier
-      |  |  |  |  |        |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |     |- TypeQualifier
-      |  |  |  |        |- ConstQualifier
-      |  |  |  |           |- xtc.lang.cpp.Syntax.Language<CONST>const  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |  |  |- FunctionSpecifier
+      |  |  |  |  |     |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |     |- ConstQualifier
+      |  |  |  |        |- xtc.lang.cpp.Syntax.Language<CONST>const  
       |  |  |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>cpumask_t  
       |  |  |- UnaryIdentifierDeclarator
       |  |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
@@ -178,24 +180,23 @@
       |  |           |- ParameterTypeListOpt
       |  |           |  |- ParameterTypeList
       |  |           |     |- ParameterList
-      |  |           |        |- ParameterDeclaration
+      |  |           |        |- ParameterIdentifierDeclaration
       |  |           |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |           |           |- SimpleDeclarator
-      |  |           |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |           |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |           |           |- AttributeSpecifierListOpt
       |  |           |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
-      |  |        |- PrimaryExpression
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |- UnaryExpression
-      |  |        |  |  |- Unaryoperator
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<AND>&  
-      |  |        |  |  |- PrimaryIdentifier
-      |  |        |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu_online_mask  
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- UnaryExpression
+      |  |        |  |- Unaryoperator
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<AND>&  
+      |  |        |  |- PrimaryIdentifier
+      |  |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu_online_mask  
       |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
       |- FunctionDefinition
@@ -216,13 +217,15 @@
       |  |           |- ParameterTypeListOpt
       |  |           |  |- ParameterTypeList
       |  |           |     |- ParameterList
-      |  |           |        |- ParameterDeclaration
+      |  |           |        |- ParameterIdentifierDeclaration
       |  |           |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |           |           |- SimpleDeclarator
-      |  |           |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |           |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |           |           |- AttributeSpecifierListOpt
       |  |           |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- SelectionStatement
       |  |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
@@ -236,6 +239,7 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- CompoundStatement
       |  |     |     |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+      |  |     |     |- LocalLabelDeclarationListOpt
       |  |     |     |- DeclarationOrStatementList
       |  |     |     |  |- ExpressionStatement
       |  |     |     |  |  |- FunctionCall
@@ -266,25 +270,20 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
       |  |     |  |- EqualityExpression
-      |  |     |  |  |- PrimaryExpression
-      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |  |- PrimaryExpression
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |  |  |- Subscript
-      |  |     |  |  |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_to_cpumask_map_V0  
-      |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
-      |  |     |  |  |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |  |- Subscript
+      |  |     |  |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_to_cpumask_map_V0  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
+      |  |     |  |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<EQ>==  
       |  |     |  |  |- PrimaryIdentifier
       |  |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>NULL  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- CompoundStatement
       |  |     |     |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+      |  |     |     |- LocalLabelDeclarationListOpt
       |  |     |     |- DeclarationOrStatementList
       |  |     |     |  |- ExpressionStatement
       |  |     |     |  |  |- FunctionCall
@@ -310,19 +309,13 @@
       |  |     |     |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
-      |  |        |- PrimaryExpression
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |- PrimaryExpression
-      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |  |- Subscript
-      |  |        |  |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_to_cpumask_map_V0  
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
-      |  |        |  |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
-      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- Subscript
+      |  |        |  |- PrimaryIdentifier
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_to_cpumask_map_V0  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
+      |  |        |  |- PrimaryIdentifier
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
       |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
       |- FunctionDefinition
@@ -330,10 +323,9 @@
       |  |  |- BasicDeclarationSpecifier
       |  |  |  |- DeclarationQualifierList
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |     |- TypeQualifier
-      |  |  |  |        |- FunctionSpecifier
-      |  |  |  |           |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |     |- FunctionSpecifier
+      |  |  |  |        |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |  |- FunctionDeclarator
       |  |     |- SimpleDeclarator
@@ -343,11 +335,12 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterAbstractDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
       |- FunctionDefinition
@@ -355,14 +348,12 @@
       |  |  |- TypedefDeclarationSpecifier
       |  |  |  |- DeclarationQualifierList
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |  |  |- TypeQualifier
-      |  |  |  |  |     |- FunctionSpecifier
-      |  |  |  |  |        |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |     |- TypeQualifier
-      |  |  |  |        |- ConstQualifier
-      |  |  |  |           |- xtc.lang.cpp.Syntax.Language<CONST>const  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |  |  |- FunctionSpecifier
+      |  |  |  |  |     |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |     |- ConstQualifier
+      |  |  |  |        |- xtc.lang.cpp.Syntax.Language<CONST>const  
       |  |  |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>cpumask_t  
       |  |  |- UnaryIdentifierDeclarator
       |  |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
@@ -374,29 +365,25 @@
       |  |           |- ParameterTypeListOpt
       |  |           |  |- ParameterTypeList
       |  |           |     |- ParameterList
-      |  |           |        |- ParameterDeclaration
+      |  |           |        |- ParameterIdentifierDeclaration
       |  |           |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |           |           |- SimpleDeclarator
-      |  |           |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |           |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |           |           |- AttributeSpecifierListOpt
       |  |           |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
-      |  |        |- PrimaryExpression
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |- PrimaryExpression
-      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |  |- Subscript
-      |  |        |  |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_to_cpumask_map_V0  
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
-      |  |        |  |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
-      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |        |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |- Subscript
+      |  |        |  |- PrimaryIdentifier
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_to_cpumask_map_V0  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
+      |  |        |  |- PrimaryIdentifier
+      |  |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |        |  |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
       |  |        |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  
       |- Declaration
@@ -412,6 +399,8 @@
       |  |  |     |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
       |  |  |     |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>256  
       |  |  |     |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
@@ -452,6 +441,8 @@
       |  |  |     |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
       |  |  |     |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>256  
       |  |  |     |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
@@ -488,19 +479,24 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |        |           |- SimpleDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>busnum  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>busnum  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- Declaration
       |  |     |  |- DeclaringList
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |     |  |  |- SimpleDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
+      |  |     |  |  |- InitializerOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- SelectionStatement
       |  |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
@@ -529,27 +525,18 @@
       |  |     |     |- xtc.lang.cpp.Syntax.Text<OCTALconstant>0  
       |  |     |     |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
-      |  |     |  |- PrimaryExpression
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |- AssignmentExpression
-      |  |     |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |     |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |- PrimaryExpression
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |- PrimaryExpression
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |  |- Subscript
-      |  |     |  |  |     |  |  |- PrimaryIdentifier
-      |  |     |  |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mp_bus_to_node_V5  
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
-      |  |     |  |  |     |  |  |- PrimaryIdentifier
-      |  |     |  |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>busnum  
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- AssignmentExpression
+      |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |- AssignmentOperator
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |- Subscript
+      |  |     |  |     |- PrimaryIdentifier
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mp_bus_to_node_V5  
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
+      |  |     |  |     |- PrimaryIdentifier
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>busnum  
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -568,33 +555,34 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |        |           |- SimpleDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>busnum  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>busnum  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- Declaration
       |  |     |  |- DeclaringList
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |     |  |  |- SimpleDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
-      |  |     |  |- PrimaryExpression
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |- AssignmentExpression
-      |  |     |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |     |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |- UnaryExpression
-      |  |     |  |  |     |- Unaryoperator
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<MINUS>-  
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- AssignmentExpression
+      |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |- AssignmentOperator
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |- UnaryExpression
+      |  |     |  |     |- Unaryoperator
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Language<MINUS>-  
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- SelectionStatement
       |  |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
@@ -624,27 +612,18 @@
       |  |     |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
       |  |     |     |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
-      |  |     |  |- PrimaryExpression
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |- AssignmentExpression
-      |  |     |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |     |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |- PrimaryExpression
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |- PrimaryExpression
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |  |- Subscript
-      |  |     |  |  |     |  |  |- PrimaryIdentifier
-      |  |     |  |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mp_bus_to_node_V4  
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
-      |  |     |  |  |     |  |  |- PrimaryIdentifier
-      |  |     |  |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>busnum  
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- AssignmentExpression
+      |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |- AssignmentOperator
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |- Subscript
+      |  |     |  |     |- PrimaryIdentifier
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mp_bus_to_node_V4  
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
+      |  |     |  |     |- PrimaryIdentifier
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>busnum  
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -657,10 +636,9 @@
       |  |  |- BasicDeclarationSpecifier
       |  |  |  |- DeclarationQualifierList
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |     |- TypeQualifier
-      |  |  |  |        |- FunctionSpecifier
-      |  |  |  |           |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |     |- FunctionSpecifier
+      |  |  |  |        |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |  |- FunctionDeclarator
       |  |     |- SimpleDeclarator
@@ -670,13 +648,15 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |        |           |- SimpleDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>busnum  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>busnum  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -688,10 +668,9 @@
       |  |  |- TypedefDeclarationSpecifier
       |  |  |  |- DeclarationQualifierList
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |     |- TypeQualifier
-      |  |  |  |        |- ConstQualifier
-      |  |  |  |           |- xtc.lang.cpp.Syntax.Language<CONST>const  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |     |- ConstQualifier
+      |  |  |  |        |- xtc.lang.cpp.Syntax.Language<CONST>const  
       |  |  |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>cpumask_t  
       |  |  |- UnaryIdentifierDeclarator
       |  |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
@@ -703,13 +682,15 @@
       |  |           |- ParameterTypeListOpt
       |  |           |  |- ParameterTypeList
       |  |           |     |- ParameterList
-      |  |           |        |- ParameterDeclaration
+      |  |           |        |- ParameterIdentifierDeclaration
       |  |           |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |           |           |- SimpleDeclarator
-      |  |           |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |           |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |           |           |- AttributeSpecifierListOpt
       |  |           |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -726,26 +707,19 @@
       |  |        |  |  |     |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
       |  |        |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |        |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
-      |  |        |  |- PrimaryExpression
-      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |  |- UnaryExpression
-      |  |        |  |  |  |- Unaryoperator
-      |  |        |  |  |  |  |- xtc.lang.cpp.Syntax.Language<AND>&  
-      |  |        |  |  |  |- PrimaryIdentifier
-      |  |        |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu_online_mask  
-      |  |        |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |  |- UnaryExpression
+      |  |        |  |  |- Unaryoperator
+      |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<AND>&  
+      |  |        |  |  |- PrimaryIdentifier
+      |  |        |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpu_online_mask  
       |  |        |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
       |  |        |  |- PrimaryExpression
       |  |        |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
       |  |        |     |- ConditionalExpression
       |  |        |     |  |- PrimaryExpression
       |  |        |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |     |  |  |- LogicalAndExpression
-      |  |        |     |  |  |  |- PrimaryIdentifier
-      |  |        |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_NUMA  
-      |  |        |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ANDAND>&&  
-      |  |        |     |  |  |  |- PrimaryIdentifier
-      |  |        |     |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_DEBUG_PER_CPU_MAPS  
+      |  |        |     |  |  |- PrimaryIdentifier
+      |  |        |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_DEBUG_PER_CPU_MAPS  
       |  |        |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |        |     |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
       |  |        |     |  |- FunctionCall
@@ -784,13 +758,15 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |        |           |- SimpleDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- Declaration
       |  |     |  |- DeclaringList
@@ -801,26 +777,28 @@
       |  |     |  |  |  |        |- xtc.lang.cpp.Syntax.Language<CONST>const  
       |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<TYPEDEFname>cpumask_t  
       |  |     |  |  |- UnaryIdentifierDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |     |  |     |- SimpleDeclarator
-      |  |     |  |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mask  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |     |  |  |  |- SimpleDeclarator
+      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mask  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
+      |  |     |  |  |- InitializerOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- Declaration
       |  |     |  |- DeclaringList
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |     |  |  |- SimpleDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>len  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>len  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
-      |  |     |  |- PrimaryExpression
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |- AssignmentExpression
-      |  |     |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>len  
-      |  |     |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- AssignmentExpression
+      |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>len  
+      |  |     |  |  |- AssignmentOperator
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- SelectionStatement
       |  |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
@@ -832,43 +810,37 @@
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- ExpressionStatement
-      |  |     |  |  |- PrimaryExpression
-      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |  |- AssignmentExpression
-      |  |     |  |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mask  
-      |  |     |  |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |  |- FunctionCall
-      |  |     |  |  |  |     |- PrimaryIdentifier
-      |  |     |  |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpumask_of_pcibus_V7  
-      |  |     |  |  |  |     |- ExpressionList
-      |  |     |  |  |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |  |        |- ExpressionList
-      |  |     |  |  |  |        |  |- PrimaryIdentifier
-      |  |     |  |  |  |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |     |  |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |  |- AssignmentExpression
+      |  |     |  |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mask  
+      |  |     |  |  |  |- AssignmentOperator
+      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |  |- FunctionCall
+      |  |     |  |  |     |- PrimaryIdentifier
+      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpumask_of_pcibus_V7  
+      |  |     |  |  |     |- ExpressionList
+      |  |     |  |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |  |        |- ExpressionList
+      |  |     |  |  |        |  |- PrimaryIdentifier
+      |  |     |  |  |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<ELSE>else  
       |  |     |  |- ExpressionStatement
-      |  |     |     |- PrimaryExpression
-      |  |     |     |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |     |  |- AssignmentExpression
-      |  |     |     |  |  |- PrimaryIdentifier
-      |  |     |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mask  
-      |  |     |     |  |  |- AssignmentOperator
-      |  |     |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |     |  |  |- FunctionCall
-      |  |     |     |  |     |- PrimaryIdentifier
-      |  |     |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpumask_of_node_V1  
-      |  |     |     |  |     |- ExpressionList
-      |  |     |     |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |     |  |        |- ExpressionList
-      |  |     |     |  |        |  |- PrimaryIdentifier
-      |  |     |     |  |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |     |     |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |     |- AssignmentExpression
+      |  |     |     |  |- PrimaryIdentifier
+      |  |     |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mask  
+      |  |     |     |  |- AssignmentOperator
+      |  |     |     |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |     |  |- FunctionCall
+      |  |     |     |     |- PrimaryIdentifier
+      |  |     |     |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>cpumask_of_node_V1  
+      |  |     |     |     |- ExpressionList
+      |  |     |     |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |     |        |- ExpressionList
+      |  |     |     |        |  |- PrimaryIdentifier
+      |  |     |     |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |     |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |     |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
       |  |     |  |- FunctionCall
@@ -879,14 +851,11 @@
       |  |     |  |  |  |- StringLiteralList
       |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<STRINGliteral>"mask: %ld\n"  
       |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<COMMA>,  
-      |  |     |  |  |  |- PrimaryExpression
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |- UnaryExpression
-      |  |     |  |  |     |  |- Unaryoperator
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
-      |  |     |  |  |     |  |- PrimaryIdentifier
-      |  |     |  |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mask  
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |  |  |- UnaryExpression
+      |  |     |  |  |     |- Unaryoperator
+      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+      |  |     |  |  |     |- PrimaryIdentifier
+      |  |     |  |  |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>mask  
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ReturnStatement
@@ -909,38 +878,40 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterIdentifierDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |        |           |- SimpleDeclarator
-      |  |        |              |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |        |           |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |        |           |- AttributeSpecifierListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- Declaration
       |  |     |  |- DeclaringList
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |     |  |  |- SimpleDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>ret  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>ret  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
+      |  |     |  |  |- InitializerOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
-      |  |     |  |- PrimaryExpression
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |- AssignmentExpression
-      |  |     |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>ret  
-      |  |     |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |- FunctionCall
-      |  |     |  |  |     |- PrimaryIdentifier
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>local_cpus_show_V8  
-      |  |     |  |  |     |- ExpressionList
-      |  |     |  |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |        |- ExpressionList
-      |  |     |  |  |        |  |- PrimaryIdentifier
-      |  |     |  |  |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
-      |  |     |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- AssignmentExpression
+      |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>ret  
+      |  |     |  |  |- AssignmentOperator
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |- FunctionCall
+      |  |     |  |     |- PrimaryIdentifier
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>local_cpus_show_V8  
+      |  |     |  |     |- ExpressionList
+      |  |     |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |        |- ExpressionList
+      |  |     |  |        |  |- PrimaryIdentifier
+      |  |     |  |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node  
+      |  |     |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -956,9 +927,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>pcibios_scan_root_V8  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -969,32 +942,21 @@
       |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
       |  |        |  |  |  |- LogicalORExpression
       |  |        |  |  |  |  |- LogicalAndExpression
-      |  |        |  |  |  |  |  |- LogicalAndExpression
-      |  |        |  |  |  |  |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_NUMA  
-      |  |        |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ANDAND>&&  
-      |  |        |  |  |  |  |  |  |- PrimaryIdentifier
-      |  |        |  |  |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_PCI  
+      |  |        |  |  |  |  |  |- PrimaryIdentifier
+      |  |        |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_NUMA  
       |  |        |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ANDAND>&&  
-      |  |        |  |  |  |  |  |- PrimaryExpression
-      |  |        |  |  |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |  |  |  |     |- UnaryExpression
-      |  |        |  |  |  |  |     |  |- Unaryoperator
-      |  |        |  |  |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<NOT>!  
-      |  |        |  |  |  |  |     |  |- PrimaryIdentifier
-      |  |        |  |  |  |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_X86_64  
-      |  |        |  |  |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |        |  |  |  |  |  |- UnaryExpression
+      |  |        |  |  |  |  |     |- Unaryoperator
+      |  |        |  |  |  |  |     |  |- xtc.lang.cpp.Syntax.Language<NOT>!  
+      |  |        |  |  |  |  |     |- PrimaryIdentifier
+      |  |        |  |  |  |  |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_X86_64  
       |  |        |  |  |  |  |- xtc.lang.cpp.Syntax.Language<OROR>||  
       |  |        |  |  |  |  |- LogicalAndExpression
-      |  |        |  |  |  |     |- LogicalAndExpression
-      |  |        |  |  |  |     |  |- PrimaryIdentifier
-      |  |        |  |  |  |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_X86_32  
-      |  |        |  |  |  |     |  |- xtc.lang.cpp.Syntax.Language<ANDAND>&&  
-      |  |        |  |  |  |     |  |- PrimaryIdentifier
-      |  |        |  |  |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_NUMA  
+      |  |        |  |  |  |     |- PrimaryIdentifier
+      |  |        |  |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_X86_32  
       |  |        |  |  |  |     |- xtc.lang.cpp.Syntax.Language<ANDAND>&&  
       |  |        |  |  |  |     |- PrimaryIdentifier
-      |  |        |  |  |  |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_PCI  
+      |  |        |  |  |  |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_NUMA  
       |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |        |  |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
       |  |        |  |  |- FunctionCall
@@ -1013,21 +975,14 @@
       |  |        |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
       |  |        |  |     |  |  |- LogicalAndExpression
       |  |        |  |     |  |  |  |- LogicalAndExpression
-      |  |        |  |     |  |  |  |  |- LogicalAndExpression
-      |  |        |  |     |  |  |  |  |  |- PrimaryExpression
-      |  |        |  |     |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |        |  |     |  |  |  |  |  |  |- UnaryExpression
-      |  |        |  |     |  |  |  |  |  |  |  |- Unaryoperator
-      |  |        |  |     |  |  |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<NOT>!  
-      |  |        |  |     |  |  |  |  |  |  |  |- PrimaryIdentifier
-      |  |        |  |     |  |  |  |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_X86_32  
-      |  |        |  |     |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |        |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ANDAND>&&  
+      |  |        |  |     |  |  |  |  |- UnaryExpression
+      |  |        |  |     |  |  |  |  |  |- Unaryoperator
+      |  |        |  |     |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<NOT>!  
       |  |        |  |     |  |  |  |  |  |- PrimaryIdentifier
-      |  |        |  |     |  |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_NUMA  
+      |  |        |  |     |  |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_X86_32  
       |  |        |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ANDAND>&&  
       |  |        |  |     |  |  |  |  |- PrimaryIdentifier
-      |  |        |  |     |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_PCI  
+      |  |        |  |     |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_NUMA  
       |  |        |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ANDAND>&&  
       |  |        |  |     |  |  |  |- PrimaryIdentifier
       |  |        |  |     |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_X86_64  
@@ -1065,22 +1020,25 @@
          |        |- ParameterTypeListOpt
          |        |  |- ParameterTypeList
          |        |     |- ParameterList
-         |        |        |- ParameterDeclaration
+         |        |        |- ParameterIdentifierDeclaration
          |        |        |  |- xtc.lang.cpp.Syntax.Language<INT>int  
          |        |        |  |- SimpleDeclarator
-         |        |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argc  
+         |        |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argc  
+         |        |        |  |- AttributeSpecifierListOpt
          |        |        |- xtc.lang.cpp.Syntax.Language<COMMA>,  
-         |        |        |- ParameterDeclaration
+         |        |        |- ParameterIdentifierDeclaration
          |        |           |- xtc.lang.cpp.Syntax.Language<CHAR>char  
          |        |           |- UnaryIdentifierDeclarator
-         |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-         |        |              |- UnaryIdentifierDeclarator
-         |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-         |        |                 |- SimpleDeclarator
-         |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argv  
+         |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+         |        |           |  |- UnaryIdentifierDeclarator
+         |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+         |        |           |     |- SimpleDeclarator
+         |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argv  
+         |        |           |- AttributeSpecifierListOpt
          |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
          |- CompoundStatement
+         |  |- LocalLabelDeclarationListOpt
          |  |- DeclarationOrStatementList
          |     |- SelectionStatement
          |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
@@ -1092,37 +1050,31 @@
          |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |  |- ExpressionStatement
-         |     |     |- PrimaryExpression
-         |     |     |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |     |  |- PrimaryExpression
-         |     |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |     |  |  |- AssignmentExpression
-         |     |     |  |  |  |- PrimaryIdentifier
-         |     |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>nr_node_ids_V0  
-         |     |     |  |  |  |- AssignmentOperator
-         |     |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-         |     |     |  |  |  |- MultiplicativeExpression
-         |     |     |  |  |     |- FunctionCall
-         |     |     |  |  |     |  |- PrimaryIdentifier
-         |     |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>rand  
-         |     |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-         |     |     |  |  |     |- xtc.lang.cpp.Syntax.Language<MOD>%  
-         |     |     |  |  |     |- PrimaryExpression
-         |     |     |  |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |     |  |  |        |- AdditiveExpression
-         |     |     |  |  |        |  |- PrimaryExpression
-         |     |     |  |  |        |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |     |  |  |        |  |  |- ShiftExpression
-         |     |     |  |  |        |  |  |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
-         |     |     |  |  |        |  |  |  |- xtc.lang.cpp.Syntax.Language<LS><<  
-         |     |     |  |  |        |  |  |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>8  
-         |     |     |  |  |        |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-         |     |     |  |  |        |  |- xtc.lang.cpp.Syntax.Language<MINUS>-  
-         |     |     |  |  |        |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
-         |     |     |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-         |     |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-         |     |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |     |- AssignmentExpression
+         |     |     |  |- PrimaryIdentifier
+         |     |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>nr_node_ids_V0  
+         |     |     |  |- AssignmentOperator
+         |     |     |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+         |     |     |  |- MultiplicativeExpression
+         |     |     |     |- FunctionCall
+         |     |     |     |  |- PrimaryIdentifier
+         |     |     |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>rand  
+         |     |     |     |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |     |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |     |     |- xtc.lang.cpp.Syntax.Language<MOD>%  
+         |     |     |     |- PrimaryExpression
+         |     |     |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |     |        |- AdditiveExpression
+         |     |     |        |  |- PrimaryExpression
+         |     |     |        |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |     |        |  |  |- ShiftExpression
+         |     |     |        |  |  |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
+         |     |     |        |  |  |  |- xtc.lang.cpp.Syntax.Language<LS><<  
+         |     |     |        |  |  |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>8  
+         |     |     |        |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |     |        |  |- xtc.lang.cpp.Syntax.Language<MINUS>-  
+         |     |     |        |  |- xtc.lang.cpp.Syntax.Text<INTEGERconstant>1  
+         |     |     |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |     |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
          |     |- ExpressionStatement
          |     |  |- PrimaryExpression
@@ -1153,7 +1105,9 @@
          |     |  |- DeclaringList
          |     |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
          |     |  |  |- SimpleDeclarator
-         |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_V8  
+         |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_V8  
+         |     |  |  |- AssemblyExpressionOpt
+         |     |  |  |- AttributeSpecifierListOpt
          |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
          |     |- SelectionStatement
          |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
@@ -1166,23 +1120,17 @@
          |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
          |     |  |- ExpressionStatement
-         |     |  |  |- PrimaryExpression
-         |     |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |  |  |  |- PrimaryExpression
-         |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |  |  |  |  |- AssignmentExpression
-         |     |  |  |  |  |  |- PrimaryIdentifier
-         |     |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_V8  
-         |     |  |  |  |  |  |- AssignmentOperator
-         |     |  |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-         |     |  |  |  |  |  |- FunctionCall
-         |     |  |  |  |  |     |- PrimaryIdentifier
-         |     |  |  |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>pcibios_scan_root_V8  
-         |     |  |  |  |  |     |- ExpressionList
-         |     |  |  |  |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-         |     |  |  |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-         |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-         |     |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+         |     |  |  |- AssignmentExpression
+         |     |  |  |  |- PrimaryIdentifier
+         |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>node_V8  
+         |     |  |  |  |- AssignmentOperator
+         |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+         |     |  |  |  |- FunctionCall
+         |     |  |  |     |- PrimaryIdentifier
+         |     |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>pcibios_scan_root_V8  
+         |     |  |  |     |- ExpressionList
+         |     |  |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |  |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
          |     |  |- ExpressionStatement
          |     |  |  |- FunctionCall

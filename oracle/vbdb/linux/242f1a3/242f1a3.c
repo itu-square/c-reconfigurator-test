@@ -1,4 +1,5 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_CRYPTO_TEST;
+int _reconfig_CONFIG_CRYPTO_BLKCIPHER;
 
 // defined(CONFIG_CRYPTO_BLKCIPHER)
 void* crypto_alloc_ablkcipher_V0 ()

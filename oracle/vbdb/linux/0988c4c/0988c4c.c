@@ -1,6 +1,8 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_VLAN_8021Q;
+int _reconfig_CONFIG_RPS;
 
 #include <assert.h>
+
 __attribute__ ((noinline)) int nondet ()
 {
     return 42;

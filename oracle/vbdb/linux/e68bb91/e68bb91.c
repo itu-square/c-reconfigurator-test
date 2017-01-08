@@ -1,4 +1,6 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_I2C_DESIGNWARE_PLATFORM;
+int _reconfig_CONFIG_I2C_DESIGNWARE_PCI;
+
 
 // defined(CONFIG_I2C_DESIGNWARE_PLATFORM)
 int i2c_dw_init_V0 ()

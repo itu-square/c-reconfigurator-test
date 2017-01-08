@@ -1,7 +1,10 @@
-#include "/home/alex/reconfigurator_old/vbdb/busybox/simple-target/REconfig.c"
+int _reconfig_BB_FEATURE_LS_FILETYPES;
+int _reconfig_BB_FEATURE_LS_USERNAME;
+
 
 #include <stdio.h>
 #include <stdlib.h>
+
 void list_single ()
 {
 // defined(BB_FEATURE_LS_FILETYPES)
@@ -9,8 +12,8 @@ void list_single ()
     if ((_reconfig_BB_FEATURE_LS_USERNAME))
          (
                                              (_reconfig_BB_FEATURE_LS_FILETYPES)
-                                             ? (info_V0 = 0)
-                                             : (info = 0));
+                                             ? info_V0 = 0
+                                             : info = 0);
     if ((_reconfig_BB_FEATURE_LS_FILETYPES))
     {
         if (rand () % 2)

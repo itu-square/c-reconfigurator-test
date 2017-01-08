@@ -9,6 +9,8 @@
       |  |  |  |- ArrayAbstractDeclarator
       |  |  |     |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
       |  |  |     |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
@@ -28,7 +30,8 @@
       |  |  |  |        |- AttributeListOpt
       |  |  |  |        |  |- AttributeList
       |  |  |  |        |     |- Word
-      |  |  |  |        |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>noinline  
+      |  |  |  |        |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>noinline  
+      |  |  |  |        |     |- AttributeExpressionOpt
       |  |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
@@ -37,9 +40,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>nondet  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -54,6 +59,8 @@
       |  |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |  |- SimpleDeclarator
       |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>preempt_counter  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
@@ -64,10 +71,9 @@
       |  |  |- BasicDeclarationSpecifier
       |  |  |  |- DeclarationQualifierList
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |     |- TypeQualifier
-      |  |  |  |        |- FunctionSpecifier
-      |  |  |  |           |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |     |- FunctionSpecifier
+      |  |  |  |        |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |  |- FunctionDeclarator
       |  |     |- SimpleDeclarator
@@ -77,11 +83,12 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterAbstractDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |        |- PrimaryExpression
@@ -115,10 +122,9 @@
       |  |  |- BasicDeclarationSpecifier
       |  |  |  |- DeclarationQualifierList
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |     |- TypeQualifier
-      |  |  |  |        |- FunctionSpecifier
-      |  |  |  |           |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |     |- FunctionSpecifier
+      |  |  |  |        |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |  |- FunctionDeclarator
       |  |     |- SimpleDeclarator
@@ -128,11 +134,12 @@
       |  |        |- ParameterTypeListOpt
       |  |        |  |- ParameterTypeList
       |  |        |     |- ParameterList
-      |  |        |        |- ParameterDeclaration
+      |  |        |        |- ParameterAbstractDeclaration
       |  |        |           |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |        |- PrimaryExpression
@@ -168,9 +175,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>tcp_twsk_destructor  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- SelectionStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<IF>if  
@@ -205,19 +214,20 @@
       |  |  |- BasicDeclarationSpecifier
       |  |  |  |- DeclarationQualifierList
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |     |- TypeQualifier
-      |  |  |  |        |- FunctionSpecifier
-      |  |  |  |           |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |     |- FunctionSpecifier
+      |  |  |  |        |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |  |- FunctionDeclarator
       |  |     |- SimpleDeclarator
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>twsk_destructor  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |        |- FunctionCall
@@ -238,9 +248,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>inet_twsk_free  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |        |- FunctionCall
@@ -258,9 +270,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>inet_twsk_put  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |        |- FunctionCall
@@ -281,9 +295,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>inet_twdr_do_twkill_work  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |     |  |- FunctionCall
@@ -305,9 +321,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>inet_twdr_hangman  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |        |- FunctionCall
@@ -322,40 +340,40 @@
       |  |  |- BasicDeclarationSpecifier
       |  |  |  |- DeclarationQualifierList
       |  |  |  |  |- xtc.lang.cpp.Syntax.Language<STATIC>static  
-      |  |  |  |  |- DeclarationQualifier
-      |  |  |  |     |- TypeQualifier
-      |  |  |  |        |- FunctionSpecifier
-      |  |  |  |           |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
+      |  |  |  |  |- TypeQualifier
+      |  |  |  |     |- FunctionSpecifier
+      |  |  |  |        |- xtc.lang.cpp.Syntax.Language<INLINE>inline  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<VOID>void  
       |  |  |- FunctionDeclarator
       |  |     |- SimpleDeclarator
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>__run_timers  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- Declaration
       |  |     |  |- DeclaringList
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |     |  |  |- SimpleDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>preempt_count  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>preempt_count  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
-      |  |     |  |- PrimaryExpression
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |- AssignmentExpression
-      |  |     |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>preempt_count  
-      |  |     |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |- PrimaryExpression
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |- PrimaryIdentifier
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>preempt_counter  
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- AssignmentExpression
+      |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>preempt_count  
+      |  |     |  |  |- AssignmentOperator
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |- PrimaryExpression
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |     |- PrimaryIdentifier
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>preempt_counter  
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
       |  |     |  |- FunctionCall
@@ -379,6 +397,7 @@
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |        |- CompoundStatement
       |  |           |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+      |  |           |- LocalLabelDeclarationListOpt
       |  |           |- DeclarationOrStatementList
       |  |           |  |- ExpressionStatement
       |  |           |     |- FunctionCall
@@ -402,11 +421,12 @@
          |        |- ParameterTypeListOpt
          |        |  |- ParameterTypeList
          |        |     |- ParameterList
-         |        |        |- ParameterDeclaration
+         |        |        |- ParameterAbstractDeclaration
          |        |           |- xtc.lang.cpp.Syntax.Language<VOID>void  
          |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
          |- CompoundStatement
+         |  |- LocalLabelDeclarationListOpt
          |  |- DeclarationOrStatementList
          |     |- ExpressionStatement
          |     |  |- FunctionCall

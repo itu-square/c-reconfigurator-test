@@ -68,44 +68,112 @@ if (ARGV[0] != nil && ARGV[0] == "0a4ea19")
 
 	puts "source/libssh/0a4ea19/pki.c"
 
-	cfgs = configs("source/libssh/0a4ea19/pki.c")
+	cfgs = [
+				[],
+				["HAVE_OPENSSL_ECC"],
+				["HAVE_LIBCRYPTO"],
+				["WITH_SERVER"],
+				["DEBUG_CRYPTO"],
+				["HAVE_LIBGCRYPT"],
+				["HAVE_ECC"],
+				
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO"],
+				["HAVE_OPENSSL_ECC", "WITH_SERVER"],
+				["HAVE_OPENSSL_ECC", "DEBUG_CRYPTO"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBGCRYPT"],
+				["HAVE_OPENSSL_ECC", "HAVE_ECC"],
+				["HAVE_LIBCRYPTO", "WITH_SERVER"],
+				["HAVE_LIBCRYPTO", "DEBUG_CRYPTO"],
+				["HAVE_LIBCRYPTO", "HAVE_LIBGCRYPT"],
+				["HAVE_LIBCRYPTO", "HAVE_ECC"],
+				["WITH_SERVER", "DEBUG_CRYPTO"],
+				["WITH_SERVER", "HAVE_LIBGCRYPT"],
+				["WITH_SERVER", "HAVE_ECC"],
+				["DEBUG_CRYPTO", "HAVE_LIBGCRYPT"],
+				["DEBUG_CRYPTO", "HAVE_ECC"],
+				["HAVE_LIBGCRYPT", "HAVE_ECC"],
+
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "WITH_SERVER"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "DEBUG_CRYPTO"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "HAVE_LIBGCRYPT"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "WITH_SERVER", "DEBUG_CRYPTO"],
+				["HAVE_OPENSSL_ECC", "WITH_SERVER", "HAVE_LIBGCRYPT"],
+				["HAVE_OPENSSL_ECC", "WITH_SERVER", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT"],
+				["HAVE_OPENSSL_ECC", "DEBUG_CRYPTO", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["HAVE_LIBCRYPTO", "WITH_SERVER", "DEBUG_CRYPTO"],
+				["HAVE_LIBCRYPTO", "WITH_SERVER", "HAVE_LIBGCRYPT"],
+				["HAVE_LIBCRYPTO", "WITH_SERVER", "HAVE_ECC"],
+				["HAVE_LIBCRYPTO", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT"],
+				["HAVE_LIBCRYPTO", "DEBUG_CRYPTO", "HAVE_ECC"],
+				["HAVE_LIBCRYPTO", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["WITH_SERVER", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT"],
+				["WITH_SERVER", "DEBUG_CRYPTO", "HAVE_ECC"],
+				["WITH_SERVER", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["DEBUG_CRYPTO", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "WITH_SERVER", "DEBUG_CRYPTO"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "WITH_SERVER", "HAVE_LIBGCRYPT"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "WITH_SERVER", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "DEBUG_CRYPTO", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "WITH_SERVER", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT"],
+				["HAVE_OPENSSL_ECC", "WITH_SERVER", "DEBUG_CRYPTO", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "WITH_SERVER", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["HAVE_LIBCRYPTO", "WITH_SERVER", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT"],
+				["HAVE_LIBCRYPTO", "WITH_SERVER", "DEBUG_CRYPTO", "HAVE_ECC"],
+				["HAVE_LIBCRYPTO", "WITH_SERVER", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["HAVE_LIBCRYPTO", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["WITH_SERVER", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "WITH_SERVER", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "WITH_SERVER", "DEBUG_CRYPTO", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "WITH_SERVER", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["HAVE_OPENSSL_ECC", "WITH_SERVER", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+				["HAVE_LIBCRYPTO", "WITH_SERVER", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT", "HAVE_ECC"],
+
+				["HAVE_OPENSSL_ECC", "HAVE_LIBCRYPTO", "WITH_SERVER", "DEBUG_CRYPTO", "HAVE_LIBGCRYPT", "HAVE_ECC"]
+			]
 	puts cfgs.size.to_s
 
 	cid = 0
 	for cfg in cfgs
 		opts = config_opts(cfg)
-		unless (opts.include?("_WIN32") || opts.include?("HAVE_LIBGCRYPT"))
-			cid = cid + 1
-			puts cid.to_s + " " + opts
-			run_command("mkdir -p variant/libssh/0a4ea19_V#{cid}")
-			puts" ===> " + command = "clang-3.5 -E #{config_opts(cfg)} -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o variant/libssh/0a4ea19_V#{cid}/pki.c source/libssh/0a4ea19/pki.c"
-			if (run_command(command).include? "ERROR")
-				puts "ERROR"
-				puts run_command(command)
-			else
-				puts "PASS"
-				puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o variant/libssh/0a4ea19_V#{cid}/pki.bc variant/libssh/0a4ea19_V#{cid}/pki.c"
-				puts run_command(command)
-				print "1 Time: " + command_median_repeat(command, 1).rjust(15, ' ') + " |"
-				puts
-				puts" ===> " + command = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_srv_pki_do_sign_sessionid variant/libssh/0a4ea19_V#{cid}/pki.bc"
-				puts run_command(command)
-				print "1 Time: " + command_median_repeat(command, 1).rjust(15, ' ') + " |"
-				puts
-			end
+		cid = cid + 1
+		puts cid.to_s + " " + opts
+		run_command("mkdir -p variant/libssh/0a4ea19_V#{cid}")
+		puts" ===> " + command = "clang-3.5 -E #{config_opts(cfg)} -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o variant/libssh/0a4ea19_V#{cid}/pki.c source/libssh/0a4ea19/pki.c"
+		if (run_command(command).include? "ERROR")
+			puts "ERROR"
+			puts run_command(command)
+		else
+			puts "PASS"
+			puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o variant/libssh/0a4ea19_V#{cid}/pki.bc variant/libssh/0a4ea19_V#{cid}/pki.c"
+			puts run_command(command)
+			print "1 Time: " + command_median_repeat(command, 1).rjust(15, ' ') + " |"
 			puts
-			puts
+			puts" ===> " + command = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_srv_pki_do_sign_sessionid variant/libssh/0a4ea19_V#{cid}/pki.bc"
+			puts run_command(command)
+			print "1 Time: " + command_median_repeat(command, 1).rjust(15, ' ') + " |"
 			puts
 		end
+		puts
+		puts
+		puts
 	end
 
 
 	puts "VARIANT  ------------------------------------------------"
 	puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o variant/libssh/0a4ea19_V1/pki.bc variant/libssh/0a4ea19_V1/pki.c"
-	puts "MEDIAN: " + command_median(command)
+	puts "MEDIAN: " + command_median_repeat(command, 5)
 	puts
 	puts" ===> " + command = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_srv_pki_do_sign_sessionid variant/libssh/0a4ea19_V1/pki.bc"
-	puts "MEDIAN: " + command_median(command)
+	puts "MEDIAN: " + command_median_repeat(command, 5)
 	puts
 
 	puts "TARGET ------------------------------------------------"
@@ -152,7 +220,7 @@ if (ARGV[0] != nil && ARGV[0] == "0a4ea19")
 	puts "MEDIAN: " + command_median(command)
 	puts
 
-	puts" ===> " + command = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_srv_pki_do_sign_sessionid target/libssh/0a4ea19/pki.bc"
+	puts" ===> " + command = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_srv_pki_do_sign_sessionid_V2 target/libssh/0a4ea19/pki.bc"
 	puts run_command(command)
 	puts "MEDIAN: " + command_median(command)
 	puts

@@ -1,4 +1,5 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_JFFS2_FS_WBUF_VERIFY;
+
 typedef long unsigned int size_t;
 
 extern void* malloc (size_t __size) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__));
@@ -12,8 +13,8 @@ unsigned char* wbuf_verify_V0;
 
 int jffs2_nor_wbuf_flash_setup ()
 {
-    (wbuf = malloc (32));
-    if ((!wbuf))
+    wbuf = malloc (32);
+    if (!wbuf)
          return - 12;
     return 0;
 }
@@ -21,7 +22,7 @@ int jffs2_nor_wbuf_flash_setup ()
 // defined(CONFIG_JFFS2_FS_WBUF_VERIFY)
 static int jffs2_verify_write_V0 ()
 {
-    return (int) ((* wbuf_verify_V0));
+    return (int) * wbuf_verify_V0;
 }
 
 int __jffs2_flush_wbuf ()

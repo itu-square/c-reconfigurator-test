@@ -1,4 +1,6 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_MACH_OMAP_H4;
+int _reconfig_CONFIG_ARCH_OMAP2420;
+
 
 // defined(CONFIG_ARCH_OMAP2420)
 void omap2_set_globals_242x_V0 (void)

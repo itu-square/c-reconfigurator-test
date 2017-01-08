@@ -1,4 +1,6 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_UNIX98_PTYS;
+int _reconfig_CONFIG_DEVPTS_MULTIPLE_INSTANCES;
+
 __attribute__ ((noinline)) int nondet ()
 {
     return 42;
@@ -11,7 +13,7 @@ void pts_sb_from_inode (int* inode)
 // defined(CONFIG_DEVPTS_MULTIPLE_INSTANCES)
     int x_V0;
     if ((_reconfig_CONFIG_DEVPTS_MULTIPLE_INSTANCES))
-         ((x_V0 = (* inode)));
+         x_V0 = * inode;
 }
 
 void devpts_pty_kill (int* inode)
@@ -39,7 +41,7 @@ int ptmx_open_V1 ()
     {
         goto err_release;
     }
-    (driver_data = (& some_int));
+    driver_data = & some_int;
     return 0;
     err_release : tty_release (driver_data);
     return - 1;

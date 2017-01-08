@@ -8,6 +8,8 @@
       |  |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |  |- SimpleDeclarator
       |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_master_send_V0  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
@@ -24,40 +26,41 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>da7210_init_V1  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- Declaration
       |  |     |  |- DeclaringList
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |     |  |  |- SimpleDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>codec_hw_write  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>codec_hw_write  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
-      |  |     |  |- PrimaryExpression
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |- AssignmentExpression
-      |  |     |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>codec_hw_write  
-      |  |     |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |- PrimaryExpression
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |- ConditionalExpression
-      |  |     |  |  |     |  |- PrimaryExpression
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |  |  |- PrimaryIdentifier
-      |  |     |  |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_I2C  
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
-      |  |     |  |  |     |  |- PrimaryIdentifier
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_master_send_V0  
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
-      |  |     |  |  |     |  |- PrimaryIdentifier
-      |  |     |  |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_master_send  
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- AssignmentExpression
+      |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>codec_hw_write  
+      |  |     |  |  |- AssignmentOperator
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |- PrimaryExpression
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |     |- ConditionalExpression
+      |  |     |  |     |  |- PrimaryExpression
+      |  |     |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_I2C  
+      |  |     |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
+      |  |     |  |     |  |- PrimaryIdentifier
+      |  |     |  |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_master_send_V0  
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
+      |  |     |  |     |  |- PrimaryIdentifier
+      |  |     |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_master_send  
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -75,40 +78,41 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>ak4642_init_V2  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- Declaration
       |  |     |  |- DeclaringList
       |  |     |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
       |  |     |  |  |- SimpleDeclarator
-      |  |     |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>codec_hw_write  
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>codec_hw_write  
+      |  |     |  |  |- AssemblyExpressionOpt
+      |  |     |  |  |- AttributeSpecifierListOpt
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ExpressionStatement
-      |  |     |  |- PrimaryExpression
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |- AssignmentExpression
-      |  |     |  |  |  |- PrimaryIdentifier
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>codec_hw_write  
-      |  |     |  |  |  |- AssignmentOperator
-      |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-      |  |     |  |  |  |- PrimaryExpression
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |- ConditionalExpression
-      |  |     |  |  |     |  |- PrimaryExpression
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
-      |  |     |  |  |     |  |  |- PrimaryIdentifier
-      |  |     |  |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_I2C  
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
-      |  |     |  |  |     |  |- PrimaryIdentifier
-      |  |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_master_send_V0  
-      |  |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
-      |  |     |  |  |     |  |- PrimaryIdentifier
-      |  |     |  |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_master_send  
-      |  |     |  |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
-      |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |- AssignmentExpression
+      |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>codec_hw_write  
+      |  |     |  |  |- AssignmentOperator
+      |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+      |  |     |  |  |- PrimaryExpression
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |     |- ConditionalExpression
+      |  |     |  |     |  |- PrimaryExpression
+      |  |     |  |     |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |     |  |     |  |  |- PrimaryIdentifier
+      |  |     |  |     |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_I2C  
+      |  |     |  |     |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
+      |  |     |  |     |  |- PrimaryIdentifier
+      |  |     |  |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_master_send_V0  
+      |  |     |  |     |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
+      |  |     |  |     |  |- PrimaryIdentifier
+      |  |     |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>i2c_master_send  
+      |  |     |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -126,22 +130,25 @@
          |        |- ParameterTypeListOpt
          |        |  |- ParameterTypeList
          |        |     |- ParameterList
-         |        |        |- ParameterDeclaration
+         |        |        |- ParameterIdentifierDeclaration
          |        |        |  |- xtc.lang.cpp.Syntax.Language<INT>int  
          |        |        |  |- SimpleDeclarator
-         |        |        |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argc  
+         |        |        |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argc  
+         |        |        |  |- AttributeSpecifierListOpt
          |        |        |- xtc.lang.cpp.Syntax.Language<COMMA>,  
-         |        |        |- ParameterDeclaration
+         |        |        |- ParameterIdentifierDeclaration
          |        |           |- xtc.lang.cpp.Syntax.Language<CHAR>char  
          |        |           |- UnaryIdentifierDeclarator
-         |        |              |- xtc.lang.cpp.Syntax.Language<STAR>*  
-         |        |              |- UnaryIdentifierDeclarator
-         |        |                 |- xtc.lang.cpp.Syntax.Language<STAR>*  
-         |        |                 |- SimpleDeclarator
-         |        |                    |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argv  
+         |        |           |  |- xtc.lang.cpp.Syntax.Language<STAR>*  
+         |        |           |  |- UnaryIdentifierDeclarator
+         |        |           |     |- xtc.lang.cpp.Syntax.Language<STAR>*  
+         |        |           |     |- SimpleDeclarator
+         |        |           |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>argv  
+         |        |           |- AttributeSpecifierListOpt
          |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
          |- CompoundStatement
+         |  |- LocalLabelDeclarationListOpt
          |  |- DeclarationOrStatementList
          |     |- SelectionStatement
          |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  

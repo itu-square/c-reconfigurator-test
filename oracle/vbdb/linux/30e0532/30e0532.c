@@ -1,4 +1,5 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_SECURITY;
+
 __attribute__ ((noinline)) int nondet ()
 {
     return 42;
@@ -9,7 +10,7 @@ int security_old_inode_init_security_V0 (int* len)
 {
     if (nondet ())
     {
-        (* len = 0);
+        * len = 0;
         return 0;
     }
     else
@@ -25,17 +26,17 @@ int security_old_inode_init_security_V1 (int* len)
 int reiserfs_security_init (int* length)
 {
     int error;
-    (error = (
-              (_reconfig_CONFIG_SECURITY)
-              ? security_old_inode_init_security_V0 (length)
-              : security_old_inode_init_security_V1 (length)));
+    error = (
+             (_reconfig_CONFIG_SECURITY)
+             ? security_old_inode_init_security_V0 (length)
+             : security_old_inode_init_security_V1 (length));
     if (error)
     {
-        (* length = 0);
+        * length = 0;
         return error;
     }
     int x;
-    (x = (* length));
+    x = * length;
     return 0;
 }
 
@@ -43,7 +44,7 @@ int reiserfs_create ()
 {
     int retval;
     int length;
-    (retval = reiserfs_security_init ((& length)));
+    retval = reiserfs_security_init (& length);
     if (retval < 0)
     {
         return retval;

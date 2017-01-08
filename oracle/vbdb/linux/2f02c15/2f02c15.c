@@ -1,4 +1,5 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_BCM47XX;
+int _reconfig_CONFIG_SSB_DRIVER_EXTIF;
 
 // defined(CONFIG_SSB_DRIVER_EXTIF)
 int ssb_extif_gpio_in_V0 ()

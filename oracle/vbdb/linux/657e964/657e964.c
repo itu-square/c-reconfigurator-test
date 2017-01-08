@@ -1,6 +1,9 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_TCP_MD5SIG;
+int _reconfig_CONFIG_PREEMPT;
+
 
 #include <assert.h>
+
 __attribute__ ((noinline)) int nondet ()
 {
     return 42;
@@ -62,7 +65,7 @@ void inet_twdr_hangman ()
 static inline void __run_timers ()
 {
     int preempt_count;
-    (preempt_count = (preempt_counter));
+    preempt_count = (preempt_counter);
     inet_twdr_hangman ();
     if (preempt_count != (preempt_counter))
     {

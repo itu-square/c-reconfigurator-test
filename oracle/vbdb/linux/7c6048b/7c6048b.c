@@ -1,4 +1,8 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_ACPI;
+int _reconfig_CONFIG_ACPI_VIDEO;
+int _reconfig_CONFIG_STUB_POULSBO;
+int _reconfig_CONFIG_BACKLIGHT_CLASS_DEVICE;
+
 
 // defined(CONFIG_BACKLIGHT_CLASS_DEVICE)
 void backlight_device_unregister_V0 ()

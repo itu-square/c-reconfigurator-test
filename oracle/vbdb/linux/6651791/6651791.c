@@ -1,4 +1,9 @@
-#include "/home/alex/reconfigurator_old/vbdb/linux/simple-target/REconfig.c"
+int _reconfig_CONFIG_I2C;
+int _reconfig_CONFIG_SND_FSI_DA7210;
+int _reconfig_CONFIG_SND_FSI_AK4642;
+int _reconfig_CONFIG_SND_SOC_DA7210;
+int _reconfig_CONFIG_SND_SOC_AK4642;
+
 
 // defined(CONFIG_I2C)
 static int i2c_master_send_V0 = 0;
@@ -7,10 +12,10 @@ static int i2c_master_send_V0 = 0;
 static int da7210_init_V1 ()
 {
     int codec_hw_write;
-    (codec_hw_write = (
-                       (_reconfig_CONFIG_I2C)
-                       ? i2c_master_send_V0
-                       : i2c_master_send));
+    codec_hw_write = (
+                      (_reconfig_CONFIG_I2C)
+                      ? i2c_master_send_V0
+                      : i2c_master_send);
     return 0;
 }
 
@@ -18,10 +23,10 @@ static int da7210_init_V1 ()
 static int ak4642_init_V2 ()
 {
     int codec_hw_write;
-    (codec_hw_write = (
-                       (_reconfig_CONFIG_I2C)
-                       ? i2c_master_send_V0
-                       : i2c_master_send));
+    codec_hw_write = (
+                      (_reconfig_CONFIG_I2C)
+                      ? i2c_master_send_V0
+                      : i2c_master_send);
     return 0;
 }
 

@@ -9,6 +9,8 @@
       |  |  |  |- ArrayAbstractDeclarator
       |  |  |     |- xtc.lang.cpp.Syntax.Language<LBRACK>[  
       |  |  |     |- xtc.lang.cpp.Syntax.Language<RBRACK>]  
+      |  |  |- AssemblyExpressionOpt
+      |  |  |- AttributeSpecifierListOpt
       |  |  |- InitializerOpt
       |  |     |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
       |  |     |- Initializer
@@ -28,7 +30,8 @@
       |  |  |  |        |- AttributeListOpt
       |  |  |  |        |  |- AttributeList
       |  |  |  |        |     |- Word
-      |  |  |  |        |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>noinline  
+      |  |  |  |        |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>noinline  
+      |  |  |  |        |     |- AttributeExpressionOpt
       |  |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |  |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |  |  |- xtc.lang.cpp.Syntax.Language<INT>int  
@@ -37,9 +40,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>nondet  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -54,9 +59,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>vlan_hwaccel_do_receive_V0  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -71,9 +78,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>vlan_hwaccel_do_receive_V1  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ExpressionStatement
       |  |     |  |- FunctionCall
@@ -97,9 +106,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>__netif_receive_skb  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- SelectionStatement
       |  |     |  |- xtc.lang.cpp.Syntax.Language<IF>if  
@@ -112,6 +123,7 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |     |  |- CompoundStatement
       |  |     |     |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
+      |  |     |     |- LocalLabelDeclarationListOpt
       |  |     |     |- DeclarationOrStatementList
       |  |     |     |  |- ExpressionStatement
       |  |     |     |     |- PrimaryExpression
@@ -152,9 +164,11 @@
       |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>netif_receive_skb  
       |  |     |- PostfixingFunctionDeclarator
       |  |        |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+      |  |        |- ParameterTypeListOpt
       |  |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
       |  |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
       |  |- CompoundStatement
+      |  |  |- LocalLabelDeclarationListOpt
       |  |  |- DeclarationOrStatementList
       |  |     |- ReturnStatement
       |  |        |- xtc.lang.cpp.Syntax.Language<RETURN>return  
@@ -176,11 +190,12 @@
          |        |- ParameterTypeListOpt
          |        |  |- ParameterTypeList
          |        |     |- ParameterList
-         |        |        |- ParameterDeclaration
+         |        |        |- ParameterAbstractDeclaration
          |        |           |- xtc.lang.cpp.Syntax.Language<VOID>void  
          |        |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |- xtc.lang.cpp.Syntax.Language<LBRACE>{  
          |- CompoundStatement
+         |  |- LocalLabelDeclarationListOpt
          |  |- DeclarationOrStatementList
          |     |- ExpressionStatement
          |     |  |- FunctionCall
