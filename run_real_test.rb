@@ -147,13 +147,13 @@ if (ARGV[0] != nil && ARGV[0] == "0a4ea19")
 		cid = cid + 1
 		puts cid.to_s + " " + opts
 		run_command("mkdir -p variant/libssh/0a4ea19_V#{cid}")
-		puts" ===> " + command = "clang-3.5 -E #{config_opts(cfg)} -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o variant/libssh/0a4ea19_V#{cid}/pki.c source/libssh/0a4ea19/pki.c"
+		puts" ===> " + command = "clang-3.5 -E #{config_opts(cfg)} -I source/libssh/0a4ea19/incl_variant_compile/ -o variant/libssh/0a4ea19_V#{cid}/pki.c source/libssh/0a4ea19/pki.c"
 		if (run_command(command).include? "ERROR")
 			puts "ERROR"
 			puts run_command(command)
 		else
 			puts "PASS"
-			puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o variant/libssh/0a4ea19_V#{cid}/pki.bc variant/libssh/0a4ea19_V#{cid}/pki.c"
+			puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -I source/libssh/0a4ea19/incl_variant_compile/ -o variant/libssh/0a4ea19_V#{cid}/pki.bc variant/libssh/0a4ea19_V#{cid}/pki.c"
 			puts run_command(command)
 			print "1 Time: " + command_median_repeat(command, 1).rjust(15, ' ') + " |"
 			puts
@@ -169,10 +169,12 @@ if (ARGV[0] != nil && ARGV[0] == "0a4ea19")
 
 
 	puts "VARIANT  ------------------------------------------------"
-	puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o variant/libssh/0a4ea19_V1/pki.bc variant/libssh/0a4ea19_V1/pki.c"
+	puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -I source/libssh/0a4ea19/incl_variant_compile/ -o variant/libssh/0a4ea19_V59/pki.bc variant/libssh/0a4ea19_V59/pki.c"
+	puts run_command(command)
 	puts "MEDIAN: " + command_median_repeat(command, 5)
 	puts
-	puts" ===> " + command = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_srv_pki_do_sign_sessionid variant/libssh/0a4ea19_V1/pki.bc"
+	puts" ===> " + command = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_srv_pki_do_sign_sessionid variant/libssh/0a4ea19_V59/pki.bc"
+	puts run_command(command)
 	puts "MEDIAN: " + command_median_repeat(command, 5)
 	puts
 
@@ -182,40 +184,16 @@ if (ARGV[0] != nil && ARGV[0] == "0a4ea19")
 	puts" ===> " + command = "java -Xms2048m -Xmx10240m -Xss128m -jar reconfigurator.jar" +
 		" -source #{Dir.pwd}/source/libssh/0a4ea19/pki.c" +
 		" -target #{Dir.pwd}/target/libssh/0a4ea19/pki.c" +
-		" -hdFile #{Dir.pwd}/source/libssh/0a4ea19/config.h" +
-		" -include #{Dir.pwd}/source/libssh/0a4ea19/include_libssh/" +
-		" -undef _WIN32" +
-		" -undef _WIN64" +
-		" -undef __MINGW32__" +
-		" -undef __SUNPRO_C" +
-		" -undef __CYGWIN__" +
-		" -undef DES_RISC1" +
-		" -undef OPENSSL_SYS_UEFI" +
-		" -undef CRYPTO_TDEBUG" +
-		" -undef __STDC_VERSION__" +
-		" -define OPENSSL_THREADS" +
-		" -define OPENSSL_NO_RSA" +
-		" -define OPENSSL_NO_STDIO" +
-		" -define OPENSSL_NO_SOCK" +
-		" -define RECONFIGURATOR"
+		" -oracle #{Dir.pwd}/oracle/libssh/0a4ea19/pki.c.ast" +
+		" -I #{Dir.pwd}/source/libssh/0a4ea19/incl_reconf" +
+		" -reconfigureIncludes"
 	puts run_command(command)
 	puts
 
 	puts" ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall" +
-		" -U _WIN32" +
-		" -U _WIN64" +
-		" -U __MINGW32__" +
-		" -U __SUNPRO_C" +
-		" -U __CYGWIN__" +
-		" -U DES_RISC1" +
-		" -U OPENSSL_SYS_UEFI" +
-		" -U CRYPTO_TDEBUG" +
-		" -U __STDC_VERSION__" +
-		" -D OPENSSL_THREADS" +
-		" -D OPENSSL_NO_RSA" +
-		" -D OPENSSL_NO_STDIO" +
-		" -D OPENSSL_NO_SOCK" +
-		" -I source/libssh/0a4ea19/ -I source/libssh/0a4ea19/include_libgcrypt/ -I source/libssh/0a4ea19/include_libssh/ -I source/libssh/0a4ea19/include_openssl/ -o target/libssh/0a4ea19/pki.bc target/libssh/0a4ea19/pki.c"
+		" -I source/libssh/0a4ea19/incl_reconf_compile/" +
+		" -o target/libssh/0a4ea19/pki.bc" +
+		" target/libssh/0a4ea19/pki.c"
 	puts run_command(command)
 	puts "MEDIAN: " + command_median(command)
 	puts

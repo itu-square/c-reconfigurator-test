@@ -2,8 +2,6 @@
 
 #undef _WIN32
 
-#ifdef RECONFIGURATOR
-
 struct ssh_buffer_struct { };
 
 typedef struct ssh_buffer_struct* ssh_buffer;
@@ -37,5 +35,3 @@ enum ssh_keycmp_e {
 };
 
 #define DEPRECATEDIN_1_1_0(x)
-
-#endif
