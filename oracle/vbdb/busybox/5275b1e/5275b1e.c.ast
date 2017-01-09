@@ -201,21 +201,27 @@
          |     |  |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>_reconfig_CONFIG_FEATURE_INSMOD_VERSION_CHECKING  
          |     |  |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<QUESTION>?  
-         |     |  |  |     |  |  |- AssignmentExpression
-         |     |  |  |     |  |  |  |- PrimaryIdentifier
-         |     |  |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>k_crcs_V0  
-         |     |  |  |     |  |  |  |- AssignmentOperator
-         |     |  |  |     |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-         |     |  |  |     |  |  |  |- PrimaryIdentifier
-         |     |  |  |     |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>someInt  
+         |     |  |  |     |  |  |- PrimaryExpression
+         |     |  |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |  |  |     |  |  |  |- AssignmentExpression
+         |     |  |  |     |  |  |  |  |- PrimaryIdentifier
+         |     |  |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>k_crcs_V0  
+         |     |  |  |     |  |  |  |  |- AssignmentOperator
+         |     |  |  |     |  |  |  |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+         |     |  |  |     |  |  |  |  |- PrimaryIdentifier
+         |     |  |  |     |  |  |  |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>someInt  
+         |     |  |  |     |  |  |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |  |  |     |  |  |- xtc.lang.cpp.Syntax.Language<COLON>:  
-         |     |  |  |     |  |  |- AssignmentExpression
-         |     |  |  |     |  |     |- PrimaryIdentifier
-         |     |  |  |     |  |     |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>k_crcs  
-         |     |  |  |     |  |     |- AssignmentOperator
-         |     |  |  |     |  |     |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
-         |     |  |  |     |  |     |- PrimaryIdentifier
-         |     |  |  |     |  |        |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>someInt  
+         |     |  |  |     |  |  |- PrimaryExpression
+         |     |  |  |     |  |     |- xtc.lang.cpp.Syntax.Language<LPAREN>(  
+         |     |  |  |     |  |     |- AssignmentExpression
+         |     |  |  |     |  |     |  |- PrimaryIdentifier
+         |     |  |  |     |  |     |  |  |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>k_crcs  
+         |     |  |  |     |  |     |  |- AssignmentOperator
+         |     |  |  |     |  |     |  |  |- xtc.lang.cpp.Syntax.Language<ASSIGN>=  
+         |     |  |  |     |  |     |  |- PrimaryIdentifier
+         |     |  |  |     |  |     |     |- xtc.lang.cpp.Syntax.Text<IDENTIFIER>someInt  
+         |     |  |  |     |  |     |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |  |  |     |  |- xtc.lang.cpp.Syntax.Language<RPAREN>)  
          |     |  |  |     |- xtc.lang.cpp.Syntax.Language<SEMICOLON>;  
          |     |  |  |- xtc.lang.cpp.Syntax.Language<RBRACE>}  

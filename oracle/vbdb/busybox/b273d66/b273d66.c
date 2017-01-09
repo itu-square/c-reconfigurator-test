@@ -12,8 +12,8 @@ void list_single ()
     if ((_reconfig_BB_FEATURE_LS_USERNAME))
          (
                                              (_reconfig_BB_FEATURE_LS_FILETYPES)
-                                             ? info_V0 = 0
-                                             : info = 0);
+                                             ? (info_V0 = 0)
+                                             : (info = 0));
     if ((_reconfig_BB_FEATURE_LS_FILETYPES))
     {
         if (rand () % 2)

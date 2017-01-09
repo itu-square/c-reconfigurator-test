@@ -25,8 +25,8 @@ int main (int argc , char** argv)
     {
         (
          (_reconfig_CONFIG_FEATURE_INSMOD_VERSION_CHECKING)
-         ? k_crcs_V0 = someInt
-         : k_crcs = someInt);
+         ? (k_crcs_V0 = someInt)
+         : (k_crcs = someInt));
     }
     else
     {
