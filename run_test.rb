@@ -462,27 +462,39 @@ elsif (ARGV[0] != nil)
 		puts
 		puts " ===> " + command = "frama-c -val -quiet #{variant(file)}"
 		puts "\n" + run_command(command)
+		print "Frama-C MEDIAN: "
+		puts command_median_repeat(command, 50)
 		puts
 		puts " ===> " + command = "frama-c -val -quiet #{target(file)}"
 		puts "\n" + run_command(command)
+		print "Frama-C MEDIAN: "
+		puts command_median_repeat(command, 50)
 		puts
 		puts "--------------------------------------------------------------"
 		puts "  CLANG"
 		puts
 		puts " ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -o #{variantBC(file)} #{variant(file)}"
 		puts "\n" + run_command(command)
+		print "Clang MEDIAN: "
+		puts command_median_repeat(command, 50)
 		puts
 		puts " ===> " + command = "clang-3.5 -c -g -emit-llvm -Wall -o #{targetBC(file)} #{target(file)}"
 		puts "\n" + run_command(command)
+		print "Clang MEDIAN: "
+		puts command_median_repeat(command, 50)
 		puts
 		puts "--------------------------------------------------------------"
 		puts "  LLBMC"
 		puts
 		puts " ===> " + command = "llbmc #{@llbmc_args_H[file]} #{variantBC(file)}"
 		puts "\n" + run_command(command)
+		print "LLBMC MEDIAN: "
+		puts command_median_repeat(command, 50)
 		puts
 		puts " ===> " + command = "llbmc #{@llbmc_args_H[file]} #{targetBC(file)}"
 		puts "\n" + run_command(command)
+		print "LLBMC MEDIAN: "
+		puts command_median_repeat(command, 50)
 	else
 		puts "file not found"
 	end
