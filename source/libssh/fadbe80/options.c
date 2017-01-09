@@ -931,6 +931,7 @@ int ssh_options_get(ssh_session session, enum ssh_options_e type, char** value)
  * @see ssh_session_new()
  */
 int ssh_options_getopt(ssh_session session, int *argcptr, char **argv) {
+  argcptr = malloc(sizeof(int));
   char *user = NULL;
   char *cipher = NULL;
   char *identity = NULL;

@@ -398,7 +398,7 @@ elsif (ARGV[0] != nil && ARGV[0] == "fadbe80")
 	# # puts "MEDIAN: " + command_median(command)
 	# # puts
 
-	puts " ===> " + command = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_options_getopt oracle/libssh/fadbe80/options.bc"
+	puts " ===> " + command = "llbmc -ignore-missing-function-bodies --no-max-loop-iterations-checks --ignore-undetermined-functions -function-name=ssh_options_getopt target/libssh/fadbe80/options.bc"
 	puts run_command(command)
 	puts "MEDIAN: " + command_median(command)
 	puts
