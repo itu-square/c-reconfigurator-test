@@ -15,12 +15,6 @@ int _reconfig_HAVE_ECC;
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-
-// defined(_WIN32) && (_MSC_VER >= 1400)
-#if defined(_WIN32) && (_MSC_VER >= 1400)
-#include <io.h>
-#endif
-
 #include "libssh/libssh.h"
 #include "libssh/session.h"
 #include "libssh/priv.h"
@@ -34,15 +28,15 @@ int _reconfig_HAVE_ECC;
 void _ssh_pki_log (const char* function , const char* format , ...)
 {
 // defined(DEBUG_CRYPTO)
-    char buffer_V1 [ 1024 ];
+    char buffer_V0 [ 1024 ];
 // defined(DEBUG_CRYPTO)
-    va_list va_V1;
+    va_list va_V0;
     if ((_reconfig_DEBUG_CRYPTO))
     {
-        va_start (va_V1 , format);
-        vsnprintf (buffer_V1 , sizeof (buffer_V1) , format , va_V1);
-        va_end (va_V1);
-        ssh_log_function (SSH_LOG_DEBUG , function , buffer_V1);
+        va_start (va_V0 , format);
+        vsnprintf (buffer_V0 , sizeof (buffer_V0) , format , va_V0);
+        va_end (va_V0);
+        ssh_log_function (SSH_LOG_DEBUG , function , buffer_V0);
     }
     else
     {
@@ -421,131 +415,233 @@ static int pki_import_pubkey_buffer (ssh_buffer buffer , enum ssh_keytypes_e typ
     key -> type = type;
     key -> type_c = ssh_key_type_to_char (type);
     key -> flags = SSH_KEY_FLAG_PUBLIC;
-    switch (type)
+    if ((_reconfig_HAVE_ECC))
     {
-        case SSH_KEYTYPE_DSS :
+        switch (type)
         {
-            ssh_string p;
-            ssh_string q;
-            ssh_string g;
-            ssh_string pubkey;
-            p = buffer_get_ssh_string (buffer);
-            if (p == NULL)
+            case SSH_KEYTYPE_DSS :
             {
-                goto fail;
-            }
-            q = buffer_get_ssh_string (buffer);
-            if (q == NULL)
-            {
-                ssh_string_burn (p);
-                ssh_string_free (p);
-                goto fail;
-            }
-            g = buffer_get_ssh_string (buffer);
-            if (g == NULL)
-            {
-                ssh_string_burn (p);
-                ssh_string_free (p);
-                ssh_string_burn (q);
-                ssh_string_free (q);
-                goto fail;
-            }
-            pubkey = buffer_get_ssh_string (buffer);
-            if (pubkey == NULL)
-            {
+                ssh_string p;
+                ssh_string q;
+                ssh_string g;
+                ssh_string pubkey;
+                p = buffer_get_ssh_string (buffer);
+                if (p == NULL)
+                {
+                    goto fail;
+                }
+                q = buffer_get_ssh_string (buffer);
+                if (q == NULL)
+                {
+                    ssh_string_burn (p);
+                    ssh_string_free (p);
+                    goto fail;
+                }
+                g = buffer_get_ssh_string (buffer);
+                if (g == NULL)
+                {
+                    ssh_string_burn (p);
+                    ssh_string_free (p);
+                    ssh_string_burn (q);
+                    ssh_string_free (q);
+                    goto fail;
+                }
+                pubkey = buffer_get_ssh_string (buffer);
+                if (pubkey == NULL)
+                {
+                    ssh_string_burn (p);
+                    ssh_string_free (p);
+                    ssh_string_burn (q);
+                    ssh_string_free (q);
+                    ssh_string_burn (g);
+                    ssh_string_free (g);
+                    goto fail;
+                }
+                rc = pki_pubkey_build_dss (key , p , q , g , pubkey);
+                if ((_reconfig_DEBUG_CRYPTO))
+                {
+                    ssh_print_hexa ("p" , ssh_string_data (p) , ssh_string_len (p));
+                    ssh_print_hexa ("q" , ssh_string_data (q) , ssh_string_len (q));
+                    ssh_print_hexa ("g" , ssh_string_data (g) , ssh_string_len (g));
+                }
                 ssh_string_burn (p);
                 ssh_string_free (p);
                 ssh_string_burn (q);
                 ssh_string_free (q);
                 ssh_string_burn (g);
                 ssh_string_free (g);
-                goto fail;
+                ssh_string_burn (pubkey);
+                ssh_string_free (pubkey);
+                if (rc == SSH_ERROR)
+                {
+                    goto fail;
+                }
             }
-            rc = pki_pubkey_build_dss (key , p , q , g , pubkey);
-            if ((_reconfig_DEBUG_CRYPTO))
+            break;
+            case SSH_KEYTYPE_RSA : case SSH_KEYTYPE_RSA1 :
             {
-                ssh_print_hexa ("p" , ssh_string_data (p) , ssh_string_len (p));
-                ssh_print_hexa ("q" , ssh_string_data (q) , ssh_string_len (q));
-                ssh_print_hexa ("g" , ssh_string_data (g) , ssh_string_len (g));
-            }
-            ssh_string_burn (p);
-            ssh_string_free (p);
-            ssh_string_burn (q);
-            ssh_string_free (q);
-            ssh_string_burn (g);
-            ssh_string_free (g);
-            ssh_string_burn (pubkey);
-            ssh_string_free (pubkey);
-            if (rc == SSH_ERROR)
-            {
-                goto fail;
-            }
-        }
-        break;
-        case SSH_KEYTYPE_RSA : case SSH_KEYTYPE_RSA1 :
-        {
-            ssh_string e;
-            ssh_string n;
-            e = buffer_get_ssh_string (buffer);
-            if (e == NULL)
-            {
-                goto fail;
-            }
-            n = buffer_get_ssh_string (buffer);
-            if (n == NULL)
-            {
+                ssh_string e;
+                ssh_string n;
+                e = buffer_get_ssh_string (buffer);
+                if (e == NULL)
+                {
+                    goto fail;
+                }
+                n = buffer_get_ssh_string (buffer);
+                if (n == NULL)
+                {
+                    ssh_string_burn (e);
+                    ssh_string_free (e);
+                    goto fail;
+                }
+                rc = pki_pubkey_build_rsa (key , e , n);
+                if ((_reconfig_DEBUG_CRYPTO))
+                {
+                    ssh_print_hexa ("e" , ssh_string_data (e) , ssh_string_len (e));
+                    ssh_print_hexa ("n" , ssh_string_data (n) , ssh_string_len (n));
+                }
                 ssh_string_burn (e);
                 ssh_string_free (e);
-                goto fail;
+                ssh_string_burn (n);
+                ssh_string_free (n);
+                if (rc == SSH_ERROR)
+                {
+                    goto fail;
+                }
             }
-            rc = pki_pubkey_build_rsa (key , e , n);
-            if ((_reconfig_DEBUG_CRYPTO))
+            break;
+            case SSH_KEYTYPE_ECDSA :
             {
-                ssh_print_hexa ("e" , ssh_string_data (e) , ssh_string_len (e));
-                ssh_print_hexa ("n" , ssh_string_data (n) , ssh_string_len (n));
+                ssh_string e;
+                ssh_string i;
+                int nid;
+                i = buffer_get_ssh_string (buffer);
+                if (i == NULL)
+                {
+                    goto fail;
+                }
+                nid = pki_key_ecdsa_nid_from_name (ssh_string_get_char (i));
+                ssh_string_free (i);
+                if (nid == - 1)
+                {
+                    goto fail;
+                }
+                e = buffer_get_ssh_string (buffer);
+                if (e == NULL)
+                {
+                    goto fail;
+                }
+                rc = pki_pubkey_build_ecdsa (key , nid , e);
+                ssh_string_burn (e);
+                ssh_string_free (e);
+                if (rc < 0)
+                {
+                    goto fail;
+                }
             }
-            ssh_string_burn (e);
-            ssh_string_free (e);
-            ssh_string_burn (n);
-            ssh_string_free (n);
-            if (rc == SSH_ERROR)
-            {
-                goto fail;
-            }
+            break;
+            case SSH_KEYTYPE_UNKNOWN : ssh_pki_log ("Unknown public key protocol %d" , type);
+            goto fail;
         }
-        break;
-        case SSH_KEYTYPE_ECDSA :
+    }
+    else
+    {
+        switch (type)
         {
-            ssh_string e;
-            ssh_string i;
-            int nid;
-            (i = buffer_get_ssh_string (buffer));
-            if (i == NULL)
+            case SSH_KEYTYPE_DSS :
             {
-                goto fail;
+                ssh_string p;
+                ssh_string q;
+                ssh_string g;
+                ssh_string pubkey;
+                p = buffer_get_ssh_string (buffer);
+                if (p == NULL)
+                {
+                    goto fail;
+                }
+                q = buffer_get_ssh_string (buffer);
+                if (q == NULL)
+                {
+                    ssh_string_burn (p);
+                    ssh_string_free (p);
+                    goto fail;
+                }
+                g = buffer_get_ssh_string (buffer);
+                if (g == NULL)
+                {
+                    ssh_string_burn (p);
+                    ssh_string_free (p);
+                    ssh_string_burn (q);
+                    ssh_string_free (q);
+                    goto fail;
+                }
+                pubkey = buffer_get_ssh_string (buffer);
+                if (pubkey == NULL)
+                {
+                    ssh_string_burn (p);
+                    ssh_string_free (p);
+                    ssh_string_burn (q);
+                    ssh_string_free (q);
+                    ssh_string_burn (g);
+                    ssh_string_free (g);
+                    goto fail;
+                }
+                rc = pki_pubkey_build_dss (key , p , q , g , pubkey);
+                if ((_reconfig_DEBUG_CRYPTO))
+                {
+                    ssh_print_hexa ("p" , ssh_string_data (p) , ssh_string_len (p));
+                    ssh_print_hexa ("q" , ssh_string_data (q) , ssh_string_len (q));
+                    ssh_print_hexa ("g" , ssh_string_data (g) , ssh_string_len (g));
+                }
+                ssh_string_burn (p);
+                ssh_string_free (p);
+                ssh_string_burn (q);
+                ssh_string_free (q);
+                ssh_string_burn (g);
+                ssh_string_free (g);
+                ssh_string_burn (pubkey);
+                ssh_string_free (pubkey);
+                if (rc == SSH_ERROR)
+                {
+                    goto fail;
+                }
             }
-            (nid = pki_key_ecdsa_nid_from_name (ssh_string_get_char (i)));
-            ssh_string_free (i);
-            if (nid == SSH_ERROR)
+            break;
+            case SSH_KEYTYPE_RSA : case SSH_KEYTYPE_RSA1 :
             {
-                goto fail;
+                ssh_string e;
+                ssh_string n;
+                e = buffer_get_ssh_string (buffer);
+                if (e == NULL)
+                {
+                    goto fail;
+                }
+                n = buffer_get_ssh_string (buffer);
+                if (n == NULL)
+                {
+                    ssh_string_burn (e);
+                    ssh_string_free (e);
+                    goto fail;
+                }
+                rc = pki_pubkey_build_rsa (key , e , n);
+                if ((_reconfig_DEBUG_CRYPTO))
+                {
+                    ssh_print_hexa ("e" , ssh_string_data (e) , ssh_string_len (e));
+                    ssh_print_hexa ("n" , ssh_string_data (n) , ssh_string_len (n));
+                }
+                ssh_string_burn (e);
+                ssh_string_free (e);
+                ssh_string_burn (n);
+                ssh_string_free (n);
+                if (rc == SSH_ERROR)
+                {
+                    goto fail;
+                }
             }
-            (e = buffer_get_ssh_string (buffer));
-            if (e == NULL)
-            {
-                goto fail;
-            }
-            rc = pki_pubkey_build_ecdsa (key , nid , e);
-            ssh_string_burn (e);
-            ssh_string_free (e);
-            if (rc < 0)
-            {
-                goto fail;
-            }
+            break;
+            case SSH_KEYTYPE_ECDSA : case SSH_KEYTYPE_UNKNOWN : ssh_pki_log ("Unknown public key protocol %d" , type);
+            goto fail;
         }
-        break;
-        case SSH_KEYTYPE_UNKNOWN : ssh_pki_log ("Unknown public key protocol %d" , type);
-        goto fail;
     }
     * pkey = key;
     return SSH_OK;
@@ -668,7 +764,7 @@ int ssh_pki_import_pubkey_file (const char* filename , ssh_key* pkey)
         ssh_pki_log ("Error reading %s: %s" , filename , strerror (errno));
         return SSH_ERROR;
     }
-    q = (p = key_buf);
+    q = p = key_buf;
     while (!isspace ((int) * p))
          p ++;
     * p = '\0';
@@ -698,19 +794,35 @@ int ssh_pki_generate (enum ssh_keytypes_e type , int parameter , ssh_key* pkey)
     }
     key -> type = type;
     key -> type_c = ssh_key_type_to_char (type);
-    key -> flags = 0x0002 | 0x0001;
-    switch (type)
+    key -> flags = SSH_KEY_FLAG_PRIVATE | SSH_KEY_FLAG_PUBLIC;
+    if ((_reconfig_HAVE_ECC))
     {
-        case SSH_KEYTYPE_RSA : case SSH_KEYTYPE_RSA1 : rc = pki_key_generate_rsa (key , parameter);
-        if (rc == SSH_ERROR) goto error;
-        break;
-        case SSH_KEYTYPE_DSS : rc = pki_key_generate_dss (key , parameter);
-        if (rc == SSH_ERROR) goto error;
-        break;
-        case SSH_KEYTYPE_ECDSA : rc = pki_key_generate_ecdsa (key , parameter);
-        if (rc == SSH_ERROR) goto error;
-        break;
-        case SSH_KEYTYPE_UNKNOWN : goto error;
+        switch (type)
+        {
+            case SSH_KEYTYPE_RSA : case SSH_KEYTYPE_RSA1 : rc = pki_key_generate_rsa (key , parameter);
+            if (rc == SSH_ERROR) goto error;
+            break;
+            case SSH_KEYTYPE_DSS : rc = pki_key_generate_dss (key , parameter);
+            if (rc == SSH_ERROR) goto error;
+            break;
+            case SSH_KEYTYPE_ECDSA : rc = pki_key_generate_ecdsa (key , parameter);
+            if (rc == SSH_ERROR) goto error;
+            break;
+            case SSH_KEYTYPE_UNKNOWN : goto error;
+        }
+    }
+    else
+    {
+        switch (type)
+        {
+            case SSH_KEYTYPE_RSA : case SSH_KEYTYPE_RSA1 : rc = pki_key_generate_rsa (key , parameter);
+            if (rc == SSH_ERROR) goto error;
+            break;
+            case SSH_KEYTYPE_DSS : rc = pki_key_generate_dss (key , parameter);
+            if (rc == SSH_ERROR) goto error;
+            break;
+            case SSH_KEYTYPE_ECDSA : case SSH_KEYTYPE_UNKNOWN : goto error;
+        }
     }
     * pkey = key;
     return SSH_OK;
@@ -721,16 +833,16 @@ int ssh_pki_generate (enum ssh_keytypes_e type , int parameter , ssh_key* pkey)
 int ssh_pki_export_privkey_to_pubkey (const ssh_key privkey , ssh_key* pkey)
 {
     ssh_key pubkey;
-    if (privkey == NULL || (!ssh_key_is_private (privkey)))
+    if (privkey == NULL || !ssh_key_is_private (privkey))
     {
         return SSH_ERROR;
     }
-    (pubkey = pki_key_dup (privkey , 1));
+    pubkey = pki_key_dup (privkey , 1);
     if (pubkey == NULL)
     {
         return SSH_ERROR;
     }
-    (* pkey = pubkey);
+    * pkey = pubkey;
     return SSH_OK;
 }
 
@@ -741,12 +853,12 @@ int ssh_pki_export_pubkey_blob (const ssh_key key , ssh_string* pblob)
     {
         return SSH_OK;
     }
-    (blob = pki_publickey_to_blob (key));
+    blob = pki_publickey_to_blob (key);
     if (blob == NULL)
     {
         return SSH_ERROR;
     }
-    (* pblob = blob);
+    * pblob = blob;
     return SSH_OK;
 }
 
@@ -758,18 +870,18 @@ int ssh_pki_export_pubkey_base64 (const ssh_key key , char** b64_key)
     {
         return SSH_ERROR;
     }
-    (key_blob = pki_publickey_to_blob (key));
+    key_blob = pki_publickey_to_blob (key);
     if (key_blob == NULL)
     {
         return SSH_ERROR;
     }
-    (b64 = bin_to_base64 (ssh_string_data (key_blob) , ssh_string_len (key_blob)));
+    b64 = bin_to_base64 (ssh_string_data (key_blob) , ssh_string_len (key_blob));
     ssh_string_free (key_blob);
     if (b64 == NULL)
     {
         return SSH_ERROR;
     }
-    (* b64_key = (char*) b64);
+    * b64_key = (char*) b64;
     return SSH_OK;
 }
 
@@ -785,36 +897,36 @@ int ssh_pki_export_pubkey_file (const ssh_key key , const char* filename)
     {
         return SSH_ERROR;
     }
-    (user = ssh_get_local_username ());
+    user = ssh_get_local_username ();
     if (user == NULL)
     {
         return SSH_ERROR;
     }
-    (rc = gethostname (host , (sizeof (host))));
+    rc = gethostname (host , sizeof (host));
     if (rc < 0)
     {
         free (user);
         return SSH_ERROR;
     }
-    (rc = ssh_pki_export_pubkey_base64 (key , (& b64_key)));
+    rc = ssh_pki_export_pubkey_base64 (key , & b64_key);
     if (rc < 0)
     {
         free (user);
         return SSH_ERROR;
     }
-    (rc = snprintf (key_buf , (sizeof (key_buf)) , "%s %s %s@%s\n" , key -> type_c , b64_key , user , host));
+    rc = snprintf (key_buf , sizeof (key_buf) , "%s %s %s@%s\n" , key -> type_c , b64_key , user , host);
     free (user);
     free (b64_key);
     if (rc < 0)
     {
         return SSH_ERROR;
     }
-    (fp = fopen (filename , "w+"));
+    fp = fopen (filename , "w+");
     if (fp == NULL)
     {
         return SSH_ERROR;
     }
-    (rc = fwrite (key_buf , strlen (key_buf) , 1 , fp));
+    rc = fwrite (key_buf , strlen (key_buf) , 1 , fp);
     if (rc != 1 || ferror (fp))
     {
         fclose (fp);
@@ -833,45 +945,45 @@ int ssh_pki_export_pubkey_rsa1 (const ssh_key key , const char* host , char* rsa
 int ssh_pki_export_signature_blob (const ssh_signature sig , ssh_string* sig_blob)
 {
     ssh_buffer buf;
-    (buf = NULL);
+    buf = NULL;
     ssh_string str;
     int rc;
     if (sig == NULL || sig_blob == NULL)
     {
         return SSH_ERROR;
     }
-    (buf = ssh_buffer_new ());
+    buf = ssh_buffer_new ();
     if (buf == NULL)
     {
         return SSH_ERROR;
     }
-    (str = ssh_string_from_char (ssh_key_type_to_char (sig -> type)));
+    str = ssh_string_from_char (ssh_key_type_to_char (sig -> type));
     if (str == NULL)
     {
         ssh_buffer_free (buf);
         return SSH_ERROR;
     }
-    (rc = buffer_add_ssh_string (buf , str));
+    rc = buffer_add_ssh_string (buf , str);
     ssh_string_free (str);
     if (rc < 0)
     {
         ssh_buffer_free (buf);
         return SSH_ERROR;
     }
-    (str = pki_signature_to_blob (sig));
+    str = pki_signature_to_blob (sig);
     if (str == NULL)
     {
         ssh_buffer_free (buf);
         return SSH_ERROR;
     }
-    (rc = buffer_add_ssh_string (buf , str));
+    rc = buffer_add_ssh_string (buf , str);
     ssh_string_free (str);
     if (rc < 0)
     {
         ssh_buffer_free (buf);
         return SSH_ERROR;
     }
-    (str = ssh_string_new (buffer_get_rest_len (buf)));
+    str = ssh_string_new (buffer_get_rest_len (buf));
     if (str == NULL)
     {
         ssh_buffer_free (buf);
@@ -879,7 +991,7 @@ int ssh_pki_export_signature_blob (const ssh_signature sig , ssh_string* sig_blo
     }
     ssh_string_fill (str , buffer_get_rest (buf) , buffer_get_rest_len (buf));
     ssh_buffer_free (buf);
-    (* sig_blob = str);
+    * sig_blob = str;
     return SSH_OK;
 }
 
@@ -894,38 +1006,38 @@ int ssh_pki_import_signature_blob (const ssh_string sig_blob , const ssh_key pub
     {
         return SSH_ERROR;
     }
-    (buf = ssh_buffer_new ());
+    buf = ssh_buffer_new ();
     if (buf == NULL)
     {
         return SSH_ERROR;
     }
-    (rc = buffer_add_data (buf , ssh_string_data (sig_blob) , ssh_string_len (sig_blob)));
+    rc = buffer_add_data (buf , ssh_string_data (sig_blob) , ssh_string_len (sig_blob));
     if (rc < 0)
     {
         ssh_buffer_free (buf);
         return SSH_ERROR;
     }
-    (str = buffer_get_ssh_string (buf));
+    str = buffer_get_ssh_string (buf);
     if (str == NULL)
     {
         ssh_buffer_free (buf);
         return SSH_ERROR;
     }
-    (type = ssh_key_type_from_name (ssh_string_get_char (str)));
+    type = ssh_key_type_from_name (ssh_string_get_char (str));
     ssh_string_free (str);
-    (str = buffer_get_ssh_string (buf));
+    str = buffer_get_ssh_string (buf);
     ssh_buffer_free (buf);
     if (str == NULL)
     {
         return SSH_ERROR;
     }
-    (sig = pki_signature_from_blob (pubkey , str , type));
+    sig = pki_signature_from_blob (pubkey , str , type);
     ssh_string_free (str);
     if (sig == NULL)
     {
         return SSH_ERROR;
     }
-    (* psig = sig);
+    * psig = sig;
     return SSH_OK;
 }
 
@@ -933,7 +1045,7 @@ int ssh_pki_signature_verify_blob (ssh_session session , ssh_string sig_blob , c
 {
     ssh_signature sig;
     int rc;
-    (rc = ssh_pki_import_signature_blob (sig_blob , key , (& sig)));
+    rc = ssh_pki_import_signature_blob (sig_blob , key , & sig);
     if (rc < 0)
     {
         return SSH_ERROR;
@@ -941,67 +1053,37 @@ int ssh_pki_signature_verify_blob (ssh_session session , ssh_string sig_blob , c
     ssh_log (session , SSH_LOG_FUNCTIONS , "Going to verify a %s type signature" , key -> type_c);
     if (key -> type == SSH_KEYTYPE_ECDSA)
     {
-// defined(HAVE_LIBGCRYPT) && !defined(EVP_MAX_MD_SIZE)
-        unsigned char ehash_V1 [ 36 ];
-// !defined(HAVE_LIBGCRYPT) || defined(EVP_MAX_MD_SIZE)
-        unsigned char ehash_V2 [ EVP_MAX_MD_SIZE ];
-        int _reconfig_ehash_index;
-        for (_reconfig_ehash_index = 0; _reconfig_ehash_index < (
-                                                                 (_reconfig_HAVE_LIBGCRYPT && !_reconfig_EVP_MAX_MD_SIZE)
-                                                                 ? 36
-                                                                 : EVP_MAX_MD_SIZE); _reconfig_ehash_index ++)
+// HAVE_ECC
+        unsigned char ehash_V1 [ EVP_DIGEST_LEN ];
+// HAVE_ECC
+        int _reconfig_ehash_index_V1;
+        if ((HAVE_ECC))
         {
-            (
-             (_reconfig_HAVE_LIBGCRYPT && (!_reconfig_EVP_MAX_MD_SIZE))
-             ? ((ehash_V1 [ _reconfig_ehash_index ] = 0))
-             : ((ehash_V2 [ _reconfig_ehash_index ] = 0)));
+            for (_reconfig_ehash_index_V1 = 0; _reconfig_ehash_index_V1 < EVP_DIGEST_LEN; _reconfig_ehash_index_V1 ++)
+            {
+                ehash_V1 [ _reconfig_ehash_index_V1 ] = 0;
+            }
         }
-        uint32_t elen;
-        evp (key -> ecdsa_nid , digest , dlen , (
-                                                 (_reconfig_HAVE_LIBGCRYPT && (!_reconfig_EVP_MAX_MD_SIZE))
-                                                 ? ehash_V1
-                                                 : ehash_V2) , (& elen));
-        (rc = pki_signature_verify (session , sig , key , (
-                                                           (_reconfig_HAVE_LIBGCRYPT && (!_reconfig_EVP_MAX_MD_SIZE))
-                                                           ? ehash_V1
-                                                           : ehash_V2) , elen));
+// HAVE_ECC
+        uint32_t elen_V1;
+        if ((HAVE_ECC))
+        {
+            evp (key -> ecdsa_nid , digest , dlen , ehash_V1 , & elen_V1);
+            rc = pki_signature_verify (session , sig , key , ehash_V1 , elen_V1);
+        }
     }
     else
     {
-// defined(HAVE_LIBGCRYPT)
-        unsigned char hash_V3 [ 20 ];
-// !defined(HAVE_LIBGCRYPT)
-        unsigned char hash_V4 [ SHA_DIGEST_LENGTH ];
+        unsigned char hash [ SHA_DIGEST_LEN ];
         int _reconfig_hash_index;
-        for (_reconfig_hash_index = 0; _reconfig_hash_index < (
-                                                               (_reconfig_HAVE_LIBGCRYPT)
-                                                               ? 20
-                                                               : SHA_DIGEST_LENGTH); _reconfig_hash_index ++)
+        for (_reconfig_hash_index = 0; _reconfig_hash_index < SHA_DIGEST_LEN; _reconfig_hash_index ++)
         {
-            (
-             (_reconfig_HAVE_LIBGCRYPT)
-             ? ((hash_V3 [ _reconfig_hash_index ] = 0))
-             : ((hash_V4 [ _reconfig_hash_index ] = 0)));
+            hash [ _reconfig_hash_index ] = 0;
         }
-        sha1 (digest , dlen , (
-                               (_reconfig_HAVE_LIBGCRYPT)
-                               ? hash_V3
-                               : hash_V4));
+        sha1 (digest , dlen , hash);
         if ((_reconfig_DEBUG_CRYPTO))
-         ssh_print_hexa ("Hash to be verified with dsa" , (
-                                                                                        (_reconfig_HAVE_LIBGCRYPT)
-                                                                                        ? hash_V3
-                                                                                        : hash_V4) , (
-                                                                                                      (_reconfig_HAVE_LIBGCRYPT)
-                                                                                                      ? 20
-                                                                                                      : SHA_DIGEST_LENGTH));
-        (rc = pki_signature_verify (session , sig , key , (
-                                                           (_reconfig_HAVE_LIBGCRYPT)
-                                                           ? hash_V3
-                                                           : hash_V4) , (
-                                                                         (_reconfig_HAVE_LIBGCRYPT)
-                                                                         ? 20
-                                                                         : SHA_DIGEST_LENGTH)));
+         ssh_print_hexa ("Hash to be verified with dsa" , hash , SHA_DIGEST_LEN);
+        rc = pki_signature_verify (session , sig , key , hash , SHA_DIGEST_LEN);
     }
     ssh_signature_free (sig);
     return rc;
@@ -1010,41 +1092,32 @@ int ssh_pki_signature_verify_blob (ssh_session session , ssh_string sig_blob , c
 ssh_string ssh_pki_do_sign (ssh_session session , ssh_buffer sigbuf , const ssh_key privkey)
 {
     struct ssh_crypto_struct* crypto;
-    (crypto =
-              session -> current_crypto
-              ? session -> current_crypto
-              : session -> next_crypto);
-// defined(HAVE_LIBGCRYPT)
-    unsigned char hash_V3 [ 20 ];
-// !defined(HAVE_LIBGCRYPT)
-    unsigned char hash_V4 [ SHA_DIGEST_LENGTH ];
+    crypto =
+             session -> current_crypto
+             ? session -> current_crypto
+             : session -> next_crypto;
+    unsigned char hash [ SHA_DIGEST_LEN ];
     int _reconfig_hash_index;
-    for (_reconfig_hash_index = 0; _reconfig_hash_index < (
-                                                           (_reconfig_HAVE_LIBGCRYPT)
-                                                           ? 20
-                                                           : SHA_DIGEST_LENGTH); _reconfig_hash_index ++)
+    for (_reconfig_hash_index = 0; _reconfig_hash_index < SHA_DIGEST_LEN; _reconfig_hash_index ++)
     {
-        (
-         (_reconfig_HAVE_LIBGCRYPT)
-         ? ((hash_V3 [ _reconfig_hash_index ] = 0))
-         : ((hash_V4 [ _reconfig_hash_index ] = 0)));
+        hash [ _reconfig_hash_index ] = 0;
     }
     ssh_signature sig;
     ssh_string sig_blob;
     ssh_string session_id;
     SHACTX ctx;
     int rc;
-    if (privkey == NULL || (!ssh_key_is_private (privkey)))
+    if (privkey == NULL || !ssh_key_is_private (privkey))
     {
         return NULL;
     }
-    (session_id = ssh_string_new (crypto -> digest_len));
+    session_id = ssh_string_new (crypto -> digest_len);
     if (session_id == NULL)
     {
         return NULL;
     }
     ssh_string_fill (session_id , crypto -> session_id , crypto -> digest_len);
-    (ctx = sha1_init ());
+    ctx = sha1_init ();
     if (ctx == NULL)
     {
         ssh_string_free (session_id);
@@ -1053,30 +1126,15 @@ ssh_string ssh_pki_do_sign (ssh_session session , ssh_buffer sigbuf , const ssh_
     sha1_update (ctx , session_id , ssh_string_len (session_id) + 4);
     ssh_string_free (session_id);
     sha1_update (ctx , buffer_get_rest (sigbuf) , buffer_get_rest_len (sigbuf));
-    sha1_final ((
-                 (_reconfig_HAVE_LIBGCRYPT)
-                 ? hash_V3
-                 : hash_V4) , ctx);
+    sha1_final (hash , ctx);
     if ((_reconfig_DEBUG_CRYPTO))
-         ssh_print_hexa ("Hash being signed" , (
-                                                                         (_reconfig_HAVE_LIBGCRYPT)
-                                                                         ? hash_V3
-                                                                         : hash_V4) , (
-                                                                                       (_reconfig_HAVE_LIBGCRYPT)
-                                                                                       ? 20
-                                                                                       : SHA_DIGEST_LENGTH));
-    (sig = pki_do_sign (privkey , (
-                                   (_reconfig_HAVE_LIBGCRYPT)
-                                   ? hash_V3
-                                   : hash_V4) , (
-                                                 (_reconfig_HAVE_LIBGCRYPT)
-                                                 ? 20
-                                                 : SHA_DIGEST_LENGTH)));
+         ssh_print_hexa ("Hash being signed" , hash , SHA_DIGEST_LEN);
+    sig = pki_do_sign (privkey , hash , SHA_DIGEST_LEN);
     if (sig == NULL)
     {
         return NULL;
     }
-    (rc = ssh_pki_export_signature_blob (sig , (& sig_blob)));
+    rc = ssh_pki_export_signature_blob (sig , & sig_blob);
     ssh_signature_free (sig);
     if (rc < 0)
     {
@@ -1094,25 +1152,25 @@ ssh_string ssh_pki_do_sign_agent (ssh_session session , struct ssh_buffer_struct
     int rc;
     if (session -> current_crypto)
     {
-        (crypto = session -> current_crypto);
+        crypto = session -> current_crypto;
     }
     else
     {
-        (crypto = session -> next_crypto);
+        crypto = session -> next_crypto;
     }
-    (session_id = ssh_string_new (crypto -> digest_len));
+    session_id = ssh_string_new (crypto -> digest_len);
     if (session_id == NULL)
     {
         return NULL;
     }
     ssh_string_fill (session_id , crypto -> session_id , crypto -> digest_len);
-    (sig_buf = ssh_buffer_new ());
+    sig_buf = ssh_buffer_new ();
     if (sig_buf == NULL)
     {
         ssh_string_free (session_id);
         return NULL;
     }
-    (rc = buffer_add_ssh_string (sig_buf , session_id));
+    rc = buffer_add_ssh_string (sig_buf , session_id);
     if (rc < 0)
     {
         ssh_string_free (session_id);
@@ -1125,76 +1183,53 @@ ssh_string ssh_pki_do_sign_agent (ssh_session session , struct ssh_buffer_struct
         ssh_buffer_free (sig_buf);
         return NULL;
     }
-    (sig_blob = ssh_agent_sign_data (session , pubkey , sig_buf));
+    sig_blob = ssh_agent_sign_data (session , pubkey , sig_buf);
     ssh_buffer_free (sig_buf);
     return sig_blob;
 }
 
-ssh_string ssh_srv_pki_do_sign_sessionid (ssh_session session , const ssh_key privkey)
+// defined(WITH_SERVER)
+ssh_string ssh_srv_pki_do_sign_sessionid_V2 (ssh_session session , const ssh_key privkey)
 {
     struct ssh_crypto_struct* crypto;
-    (crypto =
-              session -> current_crypto
-              ? session -> current_crypto
-              : session -> next_crypto);
-// defined(HAVE_LIBGCRYPT)
-    unsigned char hash_V3 [ 20 ];
-// !defined(HAVE_LIBGCRYPT)
-    unsigned char hash_V4 [ SHA_DIGEST_LENGTH ];
+    crypto =
+             session -> current_crypto
+             ? session -> current_crypto
+             : session -> next_crypto;
+    unsigned char hash [ SHA_DIGEST_LEN ];
     int _reconfig_hash_index;
-    for (_reconfig_hash_index = 0; _reconfig_hash_index < (
-                                                           (_reconfig_HAVE_LIBGCRYPT)
-                                                           ? 20
-                                                           : SHA_DIGEST_LENGTH); _reconfig_hash_index ++)
+    for (_reconfig_hash_index = 0; _reconfig_hash_index < SHA_DIGEST_LEN; _reconfig_hash_index ++)
     {
-        (
-         (_reconfig_HAVE_LIBGCRYPT)
-         ? ((hash_V3 [ _reconfig_hash_index ] = 0))
-         : ((hash_V4 [ _reconfig_hash_index ] = 0)));
+        hash [ _reconfig_hash_index ] = 0;
     }
     ssh_signature sig;
     ssh_string sig_blob;
     SHACTX ctx;
     int rc;
-    if (session == NULL || privkey == NULL || (!ssh_key_is_private (privkey)))
+    if (session == NULL || privkey == NULL || !ssh_key_is_private (privkey))
     {
         return NULL;
     }
-    (ctx = sha1_init ());
+    ctx = sha1_init ();
     if (ctx == NULL)
     {
         return NULL;
     }
     if (crypto -> session_id == NULL)
     {
-        _ssh_set_error (session , SSH_FATAL , "Missing session_id");
+        ssh_set_error (session , SSH_FATAL , "Missing session_id");
         return NULL;
     }
     sha1_update (ctx , crypto -> session_id , crypto -> digest_len);
-    sha1_final ((
-                 (_reconfig_HAVE_LIBGCRYPT)
-                 ? hash_V3
-                 : hash_V4) , ctx);
+    sha1_final (hash , ctx);
     if ((_reconfig_DEBUG_CRYPTO))
-         ssh_print_hexa ("Hash being signed" , (
-                                                                         (_reconfig_HAVE_LIBGCRYPT)
-                                                                         ? hash_V3
-                                                                         : hash_V4) , (
-                                                                                       (_reconfig_HAVE_LIBGCRYPT)
-                                                                                       ? 20
-                                                                                       : SHA_DIGEST_LENGTH));
-    (sig = pki_do_sign_sessionid (privkey , (
-                                             (_reconfig_HAVE_LIBGCRYPT)
-                                             ? hash_V3
-                                             : hash_V4) , (
-                                                           (_reconfig_HAVE_LIBGCRYPT)
-                                                           ? 20
-                                                           : SHA_DIGEST_LENGTH)));
+         ssh_print_hexa ("Hash being signed" , hash , SHA_DIGEST_LEN);
+    sig = pki_do_sign_sessionid (privkey , hash , SHA_DIGEST_LEN);
     if (sig == NULL)
     {
         return NULL;
     }
-    (rc = ssh_pki_export_signature_blob (sig , (& sig_blob)));
+    rc = ssh_pki_export_signature_blob (sig , & sig_blob);
     ssh_signature_free (sig);
     if (rc < 0)
     {
